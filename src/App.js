@@ -27,6 +27,7 @@ function App() {
           Learn React
         </a>
         <p>The current time is {currentTime}.</p>
+        <p>Testing some things out in heroku.</p>
       </header>
     </div>
   );
