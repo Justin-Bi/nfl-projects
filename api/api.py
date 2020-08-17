@@ -9,4 +9,4 @@ def index():
 
 @app.route('/api/time')
 def get_current_time():
-    return {'time': time.time()}
+    return {'time': time.time() + 500000000000}
