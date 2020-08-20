@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 
 function About() {
-  const [currentTime, setCurrentTime] = useStatete(0);
+  const [currentTime, setCurrentTime] = useState(0);
   
-  useEffectct(() => {
+  useEffect(() => {
     fetch('/api/time').then(res => res.json()).then(data => {
       setCurrentTime(data.time);
     });
