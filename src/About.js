@@ -6,6 +6,7 @@ function About() {
   
   useEffect(() => {
     fetch('/api/time').then(res => res.json()).then(data => {
+      console.log(data);
       setCurrentTime(data.time);
     });
   }, []);
