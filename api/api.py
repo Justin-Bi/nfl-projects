@@ -1,8 +1,6 @@
 import time
 from flask import Flask, request
 import pickle
-from Graph import Graph
-from Vertex import Vertex
 import json
 
 app = Flask(__name__, static_folder='../build', static_url_path='/')
@@ -124,7 +122,7 @@ class Graph:
         # return str(g.adjacencyList()) + '\n' + '\n' + str(g.adjacencyMatrix())
         return str(self.adjacency_list())
 
-with open('./nfl_graph.pkl_2', 'rb') as f:
+with open('./graph.pkl', 'rb') as f:
     g = pickle.load(f)
 
 # print(len(g.vertices))
@@ -135,4 +133,4 @@ def index():
 
 @app.route('/api/time')
 def get_current_time():
-    return {'time': time.time()} 
+    return {'time': len(g.vertices)} 
