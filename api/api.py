@@ -3,7 +3,6 @@ from flask import Flask, request
 import pickle
 import json
 from graph_string import vertices
-from graph_obj import g_from_graph_obj
 
 app = Flask(__name__, static_folder='../build', static_url_path='/')
 
@@ -124,18 +123,6 @@ class Graph:
         # return str(g.adjacencyList()) + '\n' + '\n' + str(g.adjacencyMatrix())
         return str(self.adjacency_list())
 
-# with open('./graph.pkl', 'rb') as f:
-#     g = pickle.load(f)
-
-# with open('./vertices.pkl', 'wb') as f:
-#     pickle.dump(['test', 'vertices'], f)
-
-# with open('./nfl_graph.pkl', 'rb') as f:
-#     vertexArray = pickle.load(f)
-
-# with open('./sample.json') as json_file:
-#     data = json.load(json_file)
-
 print(len(vertices))
 
 g = Graph()
@@ -155,4 +142,17 @@ def index():
 
 @app.route('/api/time')
 def get_current_time():
-    return {'time': len(g_from_graph_obj.teams)} 
+    return {'time': len(g.vertices)} 
+
+@app.route('/api/path', methods=["POST"])
+def get_path(): 
+    player_dict = request.get_json()
+    p1 = player_dict['player1']
+    p2 = player_dict['player2']
+    if p1 in g.vertices and p2 in g.vertices:
+        path = g.find_path(p1, p2)
+    else:
+        path = []
+    for idx, item in enumerate(path):
+        path[idx] = g.vert_objs[item].name
+    return {'path': path}

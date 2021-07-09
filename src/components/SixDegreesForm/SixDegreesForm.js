@@ -5,15 +5,15 @@ function SixDegreesForm() {
   function handleSubmit2(e) {
     e.preventDefault(); // Default behavior is to refresh page, we don't want that
 
-    fetch("/api/time", {
-      // method: "POST",
-      // headers: {
-      //   "Content-Type": "application/json",
-      // },
-      // body: JSON.stringify({
-      //   player1: e.target.player1.value,
-      //   player2: e.target.player2.value,
-      // }),
+    fetch("/api/path", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        player1: e.target.player1.value,
+        player2: e.target.player2.value,
+      }),
     })
       .then((res) => res.json())
       .then((data) => {
