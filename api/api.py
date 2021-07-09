@@ -122,9 +122,9 @@ class Graph:
         # return str(g.adjacencyList()) + '\n' + '\n' + str(g.adjacencyMatrix())
         return str(self.adjacency_list())
 
-g = pickle.load(open('graph.pkl', 'rb'))
+# g = pickle.load(open('graph.pkl', 'rb'))
 
-print(len(g.vertices))
+# print(len(g.vertices))
 
 @app.route('/')
 def index():
