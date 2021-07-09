@@ -153,6 +153,6 @@ def get_path():
         path = g.find_path(p1, p2)
     else:
         path = []
-    for idx, item in enumerate(path):
-        path[idx] = g.vert_objs[item].name
+    # for idx, item in enumerate(path):
+    #     path[idx] = g.vert_objs[item].name
     return {'path': path}
