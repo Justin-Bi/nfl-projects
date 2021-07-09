@@ -129,7 +129,11 @@ class Graph:
 #     pickle.dump(g.vertices, f)
 
 with open('./vertices.pkl', 'rb') as f:
-    g = pickle.load(f)
+    vertexArray = pickle.load(f)
+
+g = Graph()
+g.vertices = vertexArray
+# print(len(g.vertices))
 
 @app.route('/')
 def index():
@@ -137,4 +141,4 @@ def index():
 
 @app.route('/api/time')
 def get_current_time():
-    return {'time': time.time()} 
+    return {'time': len(g.vertices)} 
