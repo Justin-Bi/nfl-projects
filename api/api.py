@@ -2,6 +2,7 @@ import time
 from flask import Flask, request
 import pickle
 import json
+from graph_string import vertices
 
 app = Flask(__name__, static_folder='../build', static_url_path='/')
 
@@ -131,8 +132,10 @@ class Graph:
 # with open('./nfl_graph.pkl', 'rb') as f:
 #     vertexArray = pickle.load(f)
 
-with open('./sample.json') as json_file:
-    data = json.load(json_file)
+# with open('./sample.json') as json_file:
+#     data = json.load(json_file)
+
+print(len(vertices))
 
 # print(len(data))
 
