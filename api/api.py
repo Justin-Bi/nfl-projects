@@ -126,10 +126,12 @@ class Graph:
 #     g = pickle.load(f)
 
 # with open('./vertices.pkl', 'wb') as f:
-#     pickle.dump(g.vertices, f)
+#     pickle.dump(['test', 'vertices'], f)
 
-# with open('./vertices.pkl', 'rb') as f:
-#     vertexArray = pickle.load(f)
+with open('./vertices.pkl', 'rb') as f:
+    vertexArray = pickle.load(f)
+
+print(len(vertexArray))
 
 # g = Graph()
 # g.vertices = vertexArray
