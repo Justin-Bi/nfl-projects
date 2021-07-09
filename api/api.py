@@ -137,6 +137,9 @@ class Graph:
 
 print(len(vertices))
 
+g = Graph()
+g.vertices = vertices
+
 # print(len(data))
 
 # print(len(vertexArray.vertices))
@@ -151,4 +154,4 @@ def index():
 
 @app.route('/api/time')
 def get_current_time():
-    return {'time': 300} 
+    return {'time': len(g.vertices)} 
