@@ -125,8 +125,8 @@ class Graph:
 # with open('./graph.pkl', 'rb') as f:
 #     g = pickle.load(f)
 
-with open('./vertices.pkl', 'wb') as f:
-    pickle.dump(['test', 'vertices'], f)
+with open('./vertices.pkl', 'rb') as f:
+    g = pickle.load(f)
 
 @app.route('/')
 def index():
