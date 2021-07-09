@@ -124,8 +124,8 @@ class Graph:
         # return str(g.adjacencyList()) + '\n' + '\n' + str(g.adjacencyMatrix())
         return str(self.adjacency_list())
 
-# with open('./nfl_graph.pkl_2', 'rb') as f:
-#     g = pickle.load(f)
+with open('./nfl_graph.pkl_2', 'rb') as f:
+    g = pickle.load(f)
 
 # print(len(g.vertices))
 
