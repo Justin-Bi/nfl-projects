@@ -128,10 +128,13 @@ class Graph:
 # with open('./vertices.pkl', 'wb') as f:
 #     pickle.dump(['test', 'vertices'], f)
 
-with open('./test_graph.pkl', 'rb') as f:
-    vertexArray = pickle.load(f)
+# with open('./nfl_graph.pkl', 'rb') as f:
+#     vertexArray = pickle.load(f)
 
-print(len(vertexArray.vertices))
+with open('sample.json') as json_file:
+    data = json.load(json_file)
+
+# print(len(vertexArray.vertices))
 
 # g = Graph()
 # g.vertices = vertexArray
