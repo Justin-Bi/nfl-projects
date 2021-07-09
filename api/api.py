@@ -3,6 +3,7 @@ from flask import Flask, request
 import pickle
 import json
 from graph_string import vertices
+from graph_obj import g_from_graph_obj
 
 app = Flask(__name__, static_folder='../build', static_url_path='/')
 
@@ -154,4 +155,4 @@ def index():
 
 @app.route('/api/time')
 def get_current_time():
-    return {'time': len(g.vertices)} 
+    return {'time': len(g_from_graph_obj.teams)} 
