@@ -8,42 +8,38 @@ function SixDegreesForm() {
   const [test, setTest] = useState(null);
 
   function handleSubmit2(e) {
-    e.preventDefault(); // Default behavior is to refresh page, we don't want that
-    console.log(e.target.player1);
-    console.log(e.target.player2);
+    // e.preventDefault(); // Default behavior is to refresh page, we don't want that
+    // console.log(e.target.player1);
+    // console.log(e.target.player2);
 
-    fetch("/api/path", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        player1: e.target.player1.value,
-        player2: e.target.player2.value,
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.path.length == 0) {
-          console.log("in here");
-          setTest(
-            <p>
-              No path found. Double check that the inputs are exactly as they
-              are on PFR's website. If so, then it's possible there simply is no
-              path between the players.
-            </p>
-          );
-        } else {
-          setTest(
-            data.path.map((item) => <li key={`path-item-${item}`}>{item}</li>)
-          );
-        }
-
-        // data.path.forEach((item) => {
-        //   console.log(item);
-        // });
-      });
+    // fetch("/api/path", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     player1: e.target.player1.value,
+    //     player2: e.target.player2.value,
+    //   }),
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     console.log(data);
+    //     if (data.path.length === 0) {
+    //       console.log("in here");
+    //       setTest(
+    //         <p>
+    //           No path found. Double check that the inputs are exactly as they
+    //           are on PFR's website. If so, then it's possible there simply is no
+    //           path between the players.
+    //         </p>
+    //       );
+    //     } else {
+    //       setTest(
+    //         data.path.map((item) => <li key={`path-item-${item}`}>{item}</li>)
+    //       );
+    //     }
+    //   });
   }
 
   return (
