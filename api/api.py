@@ -131,8 +131,8 @@ class Graph:
 # with open('./nfl_graph.pkl', 'rb') as f:
 #     vertexArray = pickle.load(f)
 
-with open('sample.json') as json_file:
-    data = json.load(json_file)
+# with open('sample.json') as json_file:
+#     data = json.load(json_file)
 
 # print(len(vertexArray.vertices))
 
