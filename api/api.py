@@ -122,10 +122,9 @@ class Graph:
         # return str(g.adjacencyList()) + '\n' + '\n' + str(g.adjacencyMatrix())
         return str(self.adjacency_list())
 
-with open('./graph.pkl', 'rb') as f:
-    g = pickle.load(f)
+g = pickle.load(open('graph.pkl', 'rb'))
 
-# print(len(g.vertices))
+print(len(g.vertices))
 
 @app.route('/')
 def index():
@@ -133,4 +132,4 @@ def index():
 
 @app.route('/api/time')
 def get_current_time():
-    return {'time': len(g.vertices)} 
+    return {'time': 100} 
