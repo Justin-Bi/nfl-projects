@@ -7,8 +7,8 @@ import json
 
 app = Flask(__name__, static_folder='../build', static_url_path='/')
 
-with open('./nfl_graph.pkl_2', 'rb') as f:
-    g = pickle.load(f)
+# with open('./nfl_graph.pkl_2', 'rb') as f:
+#     g = pickle.load(f)
 
 print(len(g.vertices))
 
