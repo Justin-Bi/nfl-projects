@@ -143,4 +143,4 @@ def index():
 
 @app.route('/api/time')
 def get_current_time():
-    return {'time': 1000} 
+    return {'time': 300} 
