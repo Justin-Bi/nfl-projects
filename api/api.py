@@ -132,7 +132,7 @@ with open('./vertices.pkl', 'rb') as f:
     vertexArray = pickle.load(f)
 
 g = Graph()
-g.vertices = vertexArray
+# g.vertices = vertexArray
 # print(len(g.vertices))
 
 @app.route('/')
@@ -141,4 +141,4 @@ def index():
 
 @app.route('/api/time')
 def get_current_time():
-    return {'time': len(g.vertices)} 
+    return {'time': 1000} 
