@@ -125,6 +125,9 @@ class Graph:
 # with open('./graph.pkl', 'rb') as f:
 #     g = pickle.load(f)
 
+# with open('./vertices.pkl', 'wb') as f:
+#     pickle.dump(g.vertices, f)
+
 with open('./vertices.pkl', 'rb') as f:
     g = pickle.load(f)
 
