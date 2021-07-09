@@ -131,7 +131,7 @@ class Graph:
 with open('./vertices.pkl', 'rb') as f:
     vertexArray = pickle.load(f)
 
-g = Graph()
+# g = Graph()
 # g.vertices = vertexArray
 # print(len(g.vertices))
 
