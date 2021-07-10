@@ -1,11 +1,19 @@
 import pickle
 from Graph import Graph
 from Vertex import Vertex
+import json
 
 with open('./nfl_graph.pkl', 'rb') as f:
     g = pickle.load(f)
 
-new_graph = g
-print(len(new_graph.vertices))
-with open('nfl_graph.pkl_2', 'wb') as f:
-    pickle.dump(g, f)
+vert_dict = {}
+
+for vert in g.vert_objs:
+    vert_dict[vert] = {
+        'name': g.vert_objs[vert].name,
+        'isPlayer': g.vert_objs[vert].isPlayer,
+        # 'neighbors': g.vert_objs[vert].neighbors
+    }
+
+with open("vert_objs.json", "w") as outfile:
+    json.dump(vert_dict, outfile)

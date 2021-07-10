@@ -6,6 +6,7 @@ from graph_string import vertices
 
 app = Flask(__name__, static_folder='../build', static_url_path='/')
 
+
 class Vertex:
     def __init__(self, name, id, isPlayer):
         self.name = name    # The English name, eg Aaron Rodgers or 2020 Green Bay Packers
@@ -22,6 +23,7 @@ class Vertex:
                 neighbor.neighbors.append(self.id)
         else:
             return False
+
 
 class Graph:
     def __init__(self):
@@ -123,10 +125,10 @@ class Graph:
         # return str(g.adjacencyList()) + '\n' + '\n' + str(g.adjacencyMatrix())
         return str(self.adjacency_list())
 
-print(len(vertices))
-
-g = Graph()
-g.vertices = vertices
+with open('./temp.pkl', 'wb') as f:
+    pickle.dump('test', f)
+# g = Graph()
+# g.vertices = vertices
 
 # print(len(data))
 
@@ -136,16 +138,19 @@ g.vertices = vertices
 # g.vertices = vertexArray
 # print(len(g.vertices))
 
+
 @app.route('/')
 def index():
     return app.send_static_file('index.html')
 
+
 @app.route('/api/time')
 def get_current_time():
-    return {'time': len(g.vertices)} 
+    return {'time': len(g.vertices)}
+
 
 @app.route('/api/path', methods=["POST"])
-def get_path(): 
+def get_path():
     player_dict = request.get_json()
     p1 = player_dict['player1']
     p2 = player_dict['player2']

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 
 function SixDegreesForm() {
 
+  const [test, setTest] = useState(null);
+
   function handleSubmit2(e) {
     e.preventDefault(); // Default behavior is to refresh page, we don't want that
 
@@ -17,21 +19,19 @@ function SixDegreesForm() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        // if (data.path.length === 0) {
-        //   console.log("in here");
-        //   setTest(
-        //     <p>
-        //       No path found. Double check that the inputs are exactly as they
-        //       are on PFR's website. If so, then it's possible there simply is no
-        //       path between the players.
-        //     </p>
-        //   );
-        // } else {
-        //   setTest(
-        //     data.path.map((item) => <li key={`path-item-${item}`}>{item}</li>)
-        //   );
-        // }
+        if (data.path.length === 0) {
+          setTest(
+            <p>
+              No path found. Double check that the inputs are exactly as they
+              are on PFR's website. If so, then it's possible there simply is no
+              path between the players.
+            </p>
+          );
+        } else {
+          setTest(
+            data.path.map((item) => <li key={`path-item-${item}`}>{item}</li>)
+          );
+        }
       });
   }
 
@@ -54,6 +54,7 @@ function SixDegreesForm() {
         <input type="submit" value="Submit" />
         <br />
       </form>
+      <ul>{test}</ul>
     </div>
   );
 }
