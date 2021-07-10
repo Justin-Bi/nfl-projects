@@ -128,10 +128,13 @@ class Graph:
 with open('./temp.pkl', 'wb') as f:
     pickle.dump('test', f)
 
+with open('./temp.pkl', 'rb') as infile:
+    h = pickle.load(infile)
+
 g = Graph()
 g.vertices = vertices
 
-h = 'test'
+# h = 'test'
 
 # print(len(data))
 
