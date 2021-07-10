@@ -125,8 +125,8 @@ class Graph:
         # return str(g.adjacencyList()) + '\n' + '\n' + str(g.adjacencyMatrix())
         return str(self.adjacency_list())
 
-with open('./temp.pkl', 'wb') as f:
-    pickle.dump('new test', f)
+# with open('./temp.pkl', 'wb') as f:
+#     pickle.dump('new test', f)
 
 with open('./temp.pkl', 'rb') as infile:
     h = pickle.load(infile)
