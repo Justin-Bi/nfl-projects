@@ -3,6 +3,7 @@ from flask import Flask, request
 import pickle
 import json
 from graph_string import vertices
+import os
 
 app = Flask(__name__, static_folder='../build', static_url_path='/')
 
@@ -128,13 +129,17 @@ class Graph:
 # with open('./temp.pkl', 'wb') as f:
 #     pickle.dump('new test', f)
 
-with open('./temp.pkl', 'rb') as infile:
-    h = pickle.load(infile)
+# with open('temp.pkl', 'rb') as infile:
+#     h = pickle.load(infile)
+
+# files = [f for f in os.listdir('.') if os.path.isfile(f)]
+# for f in files:
+#     print(f)
 
 g = Graph()
 g.vertices = vertices
 
-# h = 'test'
+h = 'test'
 
 # print(len(data))
 
@@ -143,7 +148,6 @@ g.vertices = vertices
 # g = Graph()
 # g.vertices = vertexArray
 # print(len(g.vertices))
-
 
 @app.route('/')
 def index():
@@ -167,3 +171,6 @@ def get_path():
     # for idx, item in enumerate(path):
     #     path[idx] = g.vert_objs[item].name
     return {'path': path}
+
+if __name__ == '__main__':
+    app.run(debug=True)
