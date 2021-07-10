@@ -127,6 +127,8 @@ class Graph:
 
 with open('./temp.pkl', 'wb') as f:
     pickle.dump('test', f)
+
+g = 'test'
 # g = Graph()
 # g.vertices = vertices
 
@@ -146,7 +148,7 @@ def index():
 
 @app.route('/api/time')
 def get_current_time():
-    return {'time': len(g.vertices)}
+    return {'time': g}
 
 
 @app.route('/api/path', methods=["POST"])

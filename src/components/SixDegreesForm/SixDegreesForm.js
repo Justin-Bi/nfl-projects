@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 function SixDegreesForm() {
-
   const [test, setTest] = useState(null);
 
   function handleSubmit2(e) {
@@ -33,6 +32,12 @@ function SixDegreesForm() {
           );
         }
       });
+
+      fetch("/api/path", {})
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data)
+        });
   }
 
   return (
