@@ -138,13 +138,13 @@ class Graph:
 #     fields = next(csvreader)
 # print(fields)
 # h = fields[0]
-g = Graph()
-g.vertices = vertices
+# g = Graph()
+# g.vertices = vertices
 
 mLink = 'https://github.com/Justin-Bi/nfl-projects/blob/master/api/nfl_graph.pkl?raw=true'
 mFile = BytesIO(requests.get(mLink).content)
-tmp = pickle.load(mFile)
-h = len(tmp.vertices)
+g = pickle.load(mFile)
+# h = len(tmp.vertices)
 
 # print(len(data))
 
@@ -161,7 +161,7 @@ def index():
 
 @app.route('/api/time')
 def get_current_time():
-    return {'time': h}
+    return {'time': 'from api time'}
 
 
 @app.route('/api/path', methods=["POST"])
@@ -173,8 +173,8 @@ def get_path():
         path = g.find_path(p1, p2)
     else:
         path = []
-    # for idx, item in enumerate(path):
-    #     path[idx] = g.vert_objs[item].name
+    for idx, item in enumerate(path):
+        path[idx] = g.vert_objs[item].name
     return {'path': path}
 
 if __name__ == '__main__':
