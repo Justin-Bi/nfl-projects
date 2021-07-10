@@ -126,7 +126,7 @@ class Graph:
         return str(self.adjacency_list())
 
 with open('./temp.pkl', 'wb') as f:
-    pickle.dump('test', f)
+    pickle.dump('new test', f)
 
 with open('./temp.pkl', 'rb') as infile:
     h = pickle.load(infile)
