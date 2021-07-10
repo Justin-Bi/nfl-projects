@@ -33,7 +33,7 @@ function SixDegreesForm() {
         }
       });
 
-      fetch("/api/path", {})
+      fetch("/api/time", {})
         .then((res) => res.json())
         .then((data) => {
           console.log(data)
