@@ -131,16 +131,16 @@ class Graph:
 
 # with open('temp.pkl', 'rb') as infile:
 #     h = pickle.load(infile)
-fields = []
-with open('mine.csv', 'r') as csvfile:
-    csvreader = csv.reader(csvfile)      
-    fields = next(csvreader)
-print(fields)
-h = fields[0]
+# fields = []
+# with open('mine.csv', 'r') as csvfile:
+#     csvreader = csv.reader(csvfile)      
+#     fields = next(csvreader)
+# print(fields)
+# h = fields[0]
 g = Graph()
 g.vertices = vertices
 
-# h = 'test'
+h = 'test'
 
 # print(len(data))
 
