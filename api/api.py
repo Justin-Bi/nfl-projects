@@ -3,7 +3,7 @@ from flask import Flask, request
 import pickle
 import json
 from graph_string import vertices
-import os
+import csv
 
 app = Flask(__name__, static_folder='../build', static_url_path='/')
 
@@ -129,13 +129,14 @@ class Graph:
 # with open('./temp.pkl', 'wb') as f:
 #     pickle.dump('new test', f)
 
-with open('temp.pkl', 'rb') as infile:
-    h = pickle.load(infile)
-
-# files = [f for f in os.listdir('.') if os.path.isfile(f)]
-# for f in files:
-#     print(f)
-
+# with open('temp.pkl', 'rb') as infile:
+#     h = pickle.load(infile)
+fields = []
+with open('mine.csv', 'r') as csvfile:
+    csvreader = csv.reader(csvfile)      
+    fields = next(csvreader)
+print(fields)
+h = fields[0]
 g = Graph()
 g.vertices = vertices
 
