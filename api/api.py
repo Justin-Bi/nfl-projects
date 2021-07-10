@@ -129,8 +129,8 @@ class Graph:
 # with open('./temp.pkl', 'wb') as f:
 #     pickle.dump('new test', f)
 
-# with open('temp.pkl', 'rb') as infile:
-#     h = pickle.load(infile)
+with open('temp.pkl', 'rb') as infile:
+    h = pickle.load(infile)
 
 # files = [f for f in os.listdir('.') if os.path.isfile(f)]
 # for f in files:
@@ -139,7 +139,7 @@ class Graph:
 g = Graph()
 g.vertices = vertices
 
-h = 'test'
+# h = 'test'
 
 # print(len(data))
 
