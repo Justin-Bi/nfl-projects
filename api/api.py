@@ -3,7 +3,8 @@ from flask import Flask, request
 import pickle
 import json
 from graph_string import vertices
-import csv
+from io import BytesIO
+import requests
 
 app = Flask(__name__, static_folder='../build', static_url_path='/')
 
@@ -140,7 +141,10 @@ class Graph:
 g = Graph()
 g.vertices = vertices
 
-h = 'test'
+mLink = 'https://github.com/Justin-Bi/nfl-projects/blob/master/api/nfl_graph.pkl?raw=true'
+mFile = BytesIO(requests.get(mLink).content)
+tmp = pickle.load(mFile)
+h = len(tmp.vertices)
 
 # print(len(data))
 
