@@ -99,5 +99,4 @@ class Graph:
 
     # Get a string representation of the graph
     def __repr__(self):
-        # return str(g.adjacencyList()) + '\n' + '\n' + str(g.adjacencyMatrix())
         return str(self.adjacency_list())

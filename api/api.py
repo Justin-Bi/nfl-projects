@@ -133,12 +133,13 @@ class Graph:
 #     h = pickle.load(infile)
 # fields = []
 # with open('mine.csv', 'r') as csvfile:
-#     csvreader = csv.reader(csvfile)      
+#     csvreader = csv.reader(csvfile)
 #     fields = next(csvreader)
 # print(fields)
 # h = fields[0]
 # g = Graph()
 # g.vertices = vertices
+
 
 # mLink = 'https://github.com/Justin-Bi/nfl-projects/blob/master/api/nfl_graph.pkl?raw=true'
 mLink = 'https://github.com/Justin-Bi/nfl-projects/blob/master/api/nfl_graph_2.pkl?raw=true'
@@ -153,6 +154,7 @@ g = pickle.load(mFile)
 # g = Graph()
 # g.vertices = vertexArray
 # print(len(g.vertices))
+
 
 @app.route('/')
 def index():
@@ -176,6 +178,7 @@ def get_path():
     for idx, item in enumerate(path):
         path[idx] = g.vert_objs[item].name
     return {'path': path}
+
 
 if __name__ == '__main__':
     app.run(debug=True)
