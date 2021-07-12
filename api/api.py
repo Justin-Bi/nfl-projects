@@ -2,7 +2,6 @@ import time
 from flask import Flask, request
 import pickle
 import json
-from graph_string import vertices
 from io import BytesIO
 import requests
 
@@ -141,8 +140,8 @@ class Graph:
 # g = Graph()
 # g.vertices = vertices
 
-mLink = 'https://github.com/Justin-Bi/nfl-projects/blob/master/api/nfl_graph.pkl?raw=true'
-# mLink = 'https://github.com/Justin-Bi/nfl-projects/blob/master/api/nfl_graph_2.pkl?raw=true'
+# mLink = 'https://github.com/Justin-Bi/nfl-projects/blob/master/api/nfl_graph.pkl?raw=true'
+mLink = 'https://github.com/Justin-Bi/nfl-projects/blob/master/api/nfl_graph_2.pkl?raw=true'
 mFile = BytesIO(requests.get(mLink).content)
 g = pickle.load(mFile)
 # h = len(tmp.vertices)
