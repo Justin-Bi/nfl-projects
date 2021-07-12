@@ -141,8 +141,8 @@ class Graph:
 # g = Graph()
 # g.vertices = vertices
 
-# mLink = 'https://github.com/Justin-Bi/nfl-projects/blob/master/api/nfl_graph.pkl?raw=true'
-mLink = 'https://github.com/Justin-Bi/nfl-projects/blob/master/api/nfl_graph_2.pkl?raw=true'
+mLink = 'https://github.com/Justin-Bi/nfl-projects/blob/master/api/nfl_graph.pkl?raw=true'
+# mLink = 'https://github.com/Justin-Bi/nfl-projects/blob/master/api/nfl_graph_2.pkl?raw=true'
 mFile = BytesIO(requests.get(mLink).content)
 g = pickle.load(mFile)
 # h = len(tmp.vertices)
