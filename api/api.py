@@ -160,12 +160,6 @@ g = pickle.load(mFile)
 def index():
     return app.send_static_file('index.html')
 
-
-@app.route('/api/time')
-def get_current_time():
-    return {'time': 'from api time'}
-
-
 @app.route('/api/path', methods=["POST"])
 def get_path():
     player_dict = request.get_json()
@@ -178,7 +172,3 @@ def get_path():
     for idx, item in enumerate(path):
         path[idx] = g.vert_objs[item].name
     return {'path': path}
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
