@@ -3,24 +3,49 @@ import requests
 from io import BytesIO
 import string
 
-mLink = 'https://github.com/Justin-Bi/nfl-projects/blob/master/api/nfl_graph.pkl?raw=true'
+# Load the graph
+mLink = 'https://github.com/Justin-Bi/nfl-projects/blob/master/api/nfl_graph_2.pkl?raw=true'
 mFile = BytesIO(requests.get(mLink).content)
 g = pickle.load(mFile)
 
 verts = g.vert_objs
 
-f = open("demofile2.txt", "w")
+f = open("dup_name_ids.txt", "w")
 
-for v in verts:
-    node_name = verts[v].name
-    if any(char in ['*', '+'] for char in node_name):
-        node_name = node_name.replace('+', '')
-        node_name = node_name.replace('*', '')
-        verts[v].name = node_name
+# Get duplicate players
+flipped = {}
+for key, vert in verts.items():
+    name = vert.name
+    if name not in flipped:
+        flipped[name] = [key]
+    else:
+        flipped[name].append(key)
 
-with open('./nfl_graph_2.pkl', 'wb') as f:
-    pickle.dump(g, f)
+x = {val: flipped[val] for val in flipped if len(flipped[val]) > 1}
+for item in x:
+    id_arr = x[item]
+    for id in id_arr:
+        f.write(id + '\n')
 
+# player_to_id = {}
+# id_to_player = {}
+
+# for v in verts:
+#     if (verts[v].isPlayer):
+#         player_to_id[verts[v].name] = v
+#         id_to_player[v] = verts[v].name
+# print(len(player_to_id))
+# print(len(id_to_player))
+
+# Remove all extra punctuation
+def strip_punctuation():
+    for v in verts:
+        node_name = verts[v].name
+        if any(char in ['*', '+'] for char in node_name):
+            f.write(node_name + '\n')
+            node_name = node_name.replace('+', '')
+            node_name = node_name.replace('*', '')
+            verts[v].name = node_name
 
 # for v in g.vert_objs:
 #     node_name = g.vert_objs[v].name
