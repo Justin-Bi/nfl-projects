@@ -1,7 +1,7 @@
 import time
 from flask import Flask, request
-import pickle
 import json
+import pickle
 from io import BytesIO
 import requests
 
@@ -123,38 +123,16 @@ class Graph:
 
     # Get a string representation of the graph
     def __repr__(self):
-        # return str(g.adjacencyList()) + '\n' + '\n' + str(g.adjacencyMatrix())
         return str(self.adjacency_list())
 
 # with open('./temp.pkl', 'wb') as f:
 #     pickle.dump('new test', f)
-
-# with open('temp.pkl', 'rb') as infile:
-#     h = pickle.load(infile)
-# fields = []
-# with open('mine.csv', 'r') as csvfile:
-#     csvreader = csv.reader(csvfile)
-#     fields = next(csvreader)
-# print(fields)
-# h = fields[0]
-# g = Graph()
-# g.vertices = vertices
-
 
 # mLink = 'https://github.com/Justin-Bi/nfl-projects/blob/master/api/nfl_graph.pkl?raw=true'
 mLink = 'https://github.com/Justin-Bi/nfl-projects/blob/master/api/nfl_graph_2.pkl?raw=true'
 mFile = BytesIO(requests.get(mLink).content)
 g = pickle.load(mFile)
 # h = len(tmp.vertices)
-
-# print(len(data))
-
-# print(len(vertexArray.vertices))
-
-# g = Graph()
-# g.vertices = vertexArray
-# print(len(g.vertices))
-
 
 @app.route('/')
 def index():
