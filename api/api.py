@@ -130,7 +130,8 @@ class Graph:
 
 # mLink = 'https://github.com/Justin-Bi/nfl-projects/blob/master/api/nfl_graph.pkl?raw=true'
 # mLink = 'https://github.com/Justin-Bi/nfl-projects/blob/master/api/nfl_graph_2.pkl?raw=true'
-mLink = 'https://github.com/Justin-Bi/nfl-projects/blob/master/api/nfl_graph_3.pkl?raw=true'
+# mLink = 'https://github.com/Justin-Bi/nfl-projects/blob/master/api/nfl_graph_3.pkl?raw=true'
+mLink = 'https://github.com/Justin-Bi/nfl-projects/blob/master/api/nfl_graph_4.pkl?raw=true'
 mFile = BytesIO(requests.get(mLink).content)
 g = pickle.load(mFile)
 # h = len(tmp.vertices)
@@ -149,5 +150,6 @@ def get_path():
     else:
         path = []
     for idx, item in enumerate(path):
-        path[idx] = g.vert_objs[item].name
+        # path[idx] = g.vert_objs[item].name
+        path[idx] = g.vert_objs[item].search_name
     return {'path': path}
