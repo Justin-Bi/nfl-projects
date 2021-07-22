@@ -129,7 +129,8 @@ class Graph:
 #     pickle.dump('new test', f)
 
 # mLink = 'https://github.com/Justin-Bi/nfl-projects/blob/master/api/nfl_graph.pkl?raw=true'
-mLink = 'https://github.com/Justin-Bi/nfl-projects/blob/master/api/nfl_graph_2.pkl?raw=true'
+# mLink = 'https://github.com/Justin-Bi/nfl-projects/blob/master/api/nfl_graph_2.pkl?raw=true'
+mLink = 'https://github.com/Justin-Bi/nfl-projects/blob/master/api/nfl_graph_3.pkl?raw=true'
 mFile = BytesIO(requests.get(mLink).content)
 g = pickle.load(mFile)
 # h = len(tmp.vertices)

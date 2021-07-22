@@ -4,19 +4,20 @@ from io import BytesIO
 import string
 
 # Load the graph
-mLink = 'https://github.com/Justin-Bi/nfl-projects/blob/master/api/nfl_graph_2.pkl?raw=true'
+mLink = 'https://github.com/Justin-Bi/nfl-projects/blob/master/api/nfl_graph_3.pkl?raw=true'
 mFile = BytesIO(requests.get(mLink).content)
 g = pickle.load(mFile)
 
 verts = g.vert_objs
 
 # f = open("dup_name_ids.txt", "w")
-f = open("dup_names_and_ids.txt", "w")
+# f = open("dup_names_and_ids.txt", "w")
+f = open("updated_dup_name_ids.txt", "w")
 
 # Get duplicate players
 flipped = {}
 for key, vert in verts.items():
-    name = vert.name
+    name = vert.search_name
     if name not in flipped:
         flipped[name] = [key]
     else:
@@ -24,12 +25,13 @@ for key, vert in verts.items():
 
 x = {val: flipped[val] for val in flipped if len(flipped[val]) > 1}
 for item in x:
-    f.write(item)
+    # f.write(item)
     id_arr = x[item]
     for id in id_arr:
-        f.write(',' + id) 
-    f.write('\n')
-    break
+        # f.write(',' + id)
+        f.write(id + '\n') 
+    # f.write('\n')
+    # break
 
 # player_to_id = {}
 # id_to_player = {}
