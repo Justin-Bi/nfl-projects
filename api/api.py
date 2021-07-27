@@ -129,6 +129,7 @@ class Graph:
 # with open('./temp.pkl', 'wb') as f:
 #     pickle.dump('new test', f)
 
+
 # mLink = 'https://github.com/Justin-Bi/nfl-projects/blob/master/api/nfl_graph_3.pkl?raw=true'
 mLink = 'https://github.com/Justin-Bi/nfl-projects/blob/master/api/nfl_graph_4.pkl?raw=true'
 mFile = BytesIO(requests.get(mLink).content)
@@ -138,25 +139,32 @@ g = pickle.load(mFile)
 # print("Out of api")
 # h = len(tmp.vertices)
 
+
 @app.route('/')
 def index():
     return app.send_static_file('index.html')
+
 
 @app.route('/api/path', methods=["POST"])
 def get_path():
     player_dict = request.get_json()
     p1 = player_dict['player1']
     p2 = player_dict['player2']
+
+    # Change the names into their IDs
+    print(g.name_to_player(p1))
+
     if p1 in g.vertices and p2 in g.vertices:
         path = g.find_path(p1, p2)
     else:
         path = []
     for idx, item in enumerate(path):
-        # path[idx] = g.vert_objs[item].name
         path[idx] = g.vert_objs[item].search_name
     return {'path': path}
 
 # Return a random player
+
+
 @app.route('/api/get_random_player', methods=["GET"])
 def get_random_player():
-    return random.choice(g.players)
+    return {"player": random.choice(g.players)}

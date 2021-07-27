@@ -3,6 +3,9 @@ import React, { useState } from "react";
 function SixDegreesForm() {
   const [pathRes, setPathRes] = useState(null);
 
+  const [playerOne, setPlayerOne] = useState("");
+  const [playerTwo, setPlayerTwo] = useState("");
+
   function handleSubmit2(e) {
     e.preventDefault(); // Default behavior is to refresh page, we don't want that
 
@@ -38,7 +41,7 @@ function SixDegreesForm() {
       });
   }
 
-  function get_random_player() {
+  function get_random_player(setFunc) {
     fetch("/api/get_random_player", {
       method: "GET",
       headers: {
@@ -47,7 +50,7 @@ function SixDegreesForm() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        setFunc(data.player);
       });
   }
 
@@ -62,13 +65,16 @@ function SixDegreesForm() {
       </p>
       <form onSubmit={handleSubmit2}>
         <label htmlFor="player1">Player 1:</label>
-        <input type="text" id="player1" name="player1" />
-        <button type="button" onClick={get_random_player}>
+        <input type="text" id="player1" name="player1" value={playerOne} />
+        <button type="button" onClick={() => get_random_player(setPlayerOne)}>
           Random
         </button>
         <br /> {/* Rename these ids later */}
         <label htmlFor="player2">Player 2:</label>
-        <input type="text" id="player2" name="player2" />
+        <input type="text" id="player2" name="player2" value={playerTwo} />
+        <button type="button" onClick={() => get_random_player(setPlayerTwo)}>
+          Random
+        </button>
         <br />
         <input type="submit" value="Submit" />
         <br />

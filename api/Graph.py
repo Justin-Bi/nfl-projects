@@ -2,6 +2,7 @@ from Vertex import Vertex
 
 # Based on https://pythonandr.com/2016/07/28/implementing-undirected-graphs-in-python/
 
+
 class Graph:
     def __init__(self):
         self.vertices = {}
@@ -48,6 +49,12 @@ class Graph:
             if v.isPlayer:
                 players.append(v)
         return players
+
+    def name_to_id(self, name):
+        for id, vert in self.vert_objs.items():
+            if vert.search_name == name:
+                return id
+        return None
 
     # Return all team vertices (including yearly rosters)
     def all_team_vertices(self):
