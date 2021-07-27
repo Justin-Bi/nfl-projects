@@ -4,6 +4,7 @@ import json
 import pickle
 from io import BytesIO
 import requests
+import random
 
 app = Flask(__name__, static_folder='../build', static_url_path='/')
 
@@ -128,12 +129,13 @@ class Graph:
 # with open('./temp.pkl', 'wb') as f:
 #     pickle.dump('new test', f)
 
-# mLink = 'https://github.com/Justin-Bi/nfl-projects/blob/master/api/nfl_graph.pkl?raw=true'
-# mLink = 'https://github.com/Justin-Bi/nfl-projects/blob/master/api/nfl_graph_2.pkl?raw=true'
 # mLink = 'https://github.com/Justin-Bi/nfl-projects/blob/master/api/nfl_graph_3.pkl?raw=true'
 mLink = 'https://github.com/Justin-Bi/nfl-projects/blob/master/api/nfl_graph_4.pkl?raw=true'
 mFile = BytesIO(requests.get(mLink).content)
 g = pickle.load(mFile)
+# print("In api")
+# print(g.find_path('GrahOt00', 'RodgAa00'))
+# print("Out of api")
 # h = len(tmp.vertices)
 
 @app.route('/')
@@ -153,3 +155,8 @@ def get_path():
         # path[idx] = g.vert_objs[item].name
         path[idx] = g.vert_objs[item].search_name
     return {'path': path}
+
+# Return a random player
+@app.route('/api/get_random_player', methods=["GET"])
+def get_random_player():
+    return random.choice(g.players)

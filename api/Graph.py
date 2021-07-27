@@ -8,6 +8,7 @@ class Graph:
         self.vert_objs = {}
         # Specifically keep track of teams, so as to know where to pick up from next time.
         self.teams = []
+        self.players = []
 
     # Add a vertex to the graph, include its current neighbors into the adjacency list
     def add_vertex(self, vertex):

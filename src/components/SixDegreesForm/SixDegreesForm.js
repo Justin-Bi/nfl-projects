@@ -29,12 +29,25 @@ function SixDegreesForm() {
               path between the players.
             </p>
           );
-        // Otherwise returns the paths in a list format (could update later to make it look better)
+          // Otherwise returns the paths in a list format (could update later to make it look better)
         } else {
           setPathRes(
             data.path.map((item) => <li key={`path-item-${item}`}>{item}</li>)
           );
         }
+      });
+  }
+
+  function get_random_player() {
+    fetch("/api/get_random_player", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
       });
   }
 
@@ -50,6 +63,9 @@ function SixDegreesForm() {
       <form onSubmit={handleSubmit2}>
         <label htmlFor="player1">Player 1:</label>
         <input type="text" id="player1" name="player1" />
+        <button type="button" onClick={get_random_player}>
+          Random
+        </button>
         <br /> {/* Rename these ids later */}
         <label htmlFor="player2">Player 2:</label>
         <input type="text" id="player2" name="player2" />
