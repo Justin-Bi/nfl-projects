@@ -148,11 +148,13 @@ def index():
 @app.route('/api/path', methods=["POST"])
 def get_path():
     player_dict = request.get_json()
-    p1 = player_dict['player1']
-    p2 = player_dict['player2']
+    name_one = player_dict['player1']
+    name_two = player_dict['player2']
 
     # Change the names into their IDs
-    print(g.name_to_player(p1))
+    p1 = g.name_to_id(name_one)
+    p2 = g.name_to_id(name_two)
+    print(p1, p2)
 
     if p1 in g.vertices and p2 in g.vertices:
         path = g.find_path(p1, p2)
