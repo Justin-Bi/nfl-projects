@@ -154,7 +154,6 @@ def get_path():
     # Change the names into their IDs
     p1 = g.name_to_id(name_one)
     p2 = g.name_to_id(name_two)
-    print(p1, p2)
 
     if p1 in g.vertices and p2 in g.vertices:
         path = g.find_path(p1, p2)
@@ -164,9 +163,14 @@ def get_path():
         path[idx] = g.vert_objs[item].search_name
     return {'path': path}
 
-# Return a random player
-
 
 @app.route('/api/get_random_player', methods=["GET"])
+# Return a random player
 def get_random_player():
     return {"player": random.choice(g.players)}
+
+
+@app.route('/api/get_all_players', methods=["GET"])
+# Get all the players (for the select input)
+def get_all_players():
+    return {"players": g.players}
