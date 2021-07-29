@@ -1,36 +1,29 @@
 import React, { useState, useEffect } from "react";
-import Select from "react-select";
-import "./SixDegreesForm.css";
+import g from "../Graph/load_json";
 
 function SixDegreesForm() {
-  const [players, setPlayers] = useState([]);
+  // const [players, setPlayers] = useState([]);
 
-  useEffect(() => {
-    fetch("/api/get_all_players", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setPlayers(...players, data.players);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch("/api/get_all_players", {
+  //     method: "GET",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setPlayers(...players, data.players);
+  //     });
+  // }, []);
 
-  console.log(players.length);
-  console.log(players.map((name) => ({ value: name, label: name }))); // Change this later so that it's stored as data
+  // console.log(players.length);
+  // console.log(players.map((name) => ({ value: name, label: name }))); // Change this later so that it's stored as data
 
   const [pathRes, setPathRes] = useState(null);
 
   const [playerOne, setPlayerOne] = useState("");
   const [playerTwo, setPlayerTwo] = useState("");
-
-  const options = [
-    { value: "chocolate", label: "Chocolate" },
-    { value: "strawberry", label: "Strawberry" },
-    { value: "vanilla", label: "Vanilla" },
-  ];
 
   function handleSubmit2(e) {
     e.preventDefault(); // Default behavior is to refresh page, we don't want that
@@ -83,6 +76,7 @@ function SixDegreesForm() {
   return (
     <div>
       <h1>Six Degrees of Separation</h1>
+      <h1>{g.vertices["HerbJu00"]}</h1>
       <p>
         Look up two players on Pro Football Reference. Paste in their URL IDs
         and hit submit. As an example, Aaron Rodgers's PFR URL is
