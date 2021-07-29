@@ -139,6 +139,8 @@ g = pickle.load(mFile)
 # print("Out of api")
 # h = len(tmp.vertices)
 
+print(g.find_path("HerbJu00", "AlleKe00"))
+
 
 @app.route('/')
 def index():
