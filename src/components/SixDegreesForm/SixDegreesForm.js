@@ -1,22 +1,7 @@
-import React, { useState, useEffect } from "react";
-import g from "../Graph/load_json";
+import React, { useState } from "react";
+import g from "../Graph/Graph";
 
 function SixDegreesForm() {
-  // const [players, setPlayers] = useState([]);
-
-  // useEffect(() => {
-  //   fetch("/api/get_all_players", {
-  //     method: "GET",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setPlayers(...players, data.players);
-  //     });
-  // }, []);
-
   // console.log(players.length);
   // console.log(players.map((name) => ({ value: name, label: name }))); // Change this later so that it's stored as data
 
@@ -27,37 +12,31 @@ function SixDegreesForm() {
 
   function handleSubmit2(e) {
     e.preventDefault(); // Default behavior is to refresh page, we don't want that
+    const id1 = g.name_to_id[e.target.player1.value];
+    const id2 = g.name_to_id[e.target.player2.value];
 
-    // Send the two player IDs over to the API to perform the shortest path alg
-    fetch("/api/path", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        // Both player IDs
-        player1: e.target.player1.value,
-        player2: e.target.player2.value,
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        // Covers potential cases if no path has been found
-        if (data.path.length === 0) {
-          setPathRes(
-            <p>
-              No path found. Double check that the inputs are exactly as they
-              are on PFR's website. If so, then it's possible there simply is no
-              path between the players.
-            </p>
-          );
-          // Otherwise returns the paths in a list format (could update later to make it look better)
-        } else {
-          setPathRes(
-            data.path.map((item) => <li key={`path-item-${item}`}>{item}</li>)
-          );
-        }
-      });
+    // If either is undefined, this won't happen
+    console.time("path");
+    let path = g.path(id1, id2);
+    console.timeEnd("path");
+
+    path.forEach((node, idx) => {
+      path[idx] = g.id_to_name[node];
+    });
+
+    // Covers potential cases if no path has been found
+    if (path.length === 0) {
+      setPathRes(
+        <p>
+          No path found. Double check that the inputs are exactly as they are on
+          PFR's website. If so, then it's possible there simply is no path
+          between the players.
+        </p>
+      );
+      // Otherwise returns the paths in a list format (could update later to make it look better)
+    } else {
+      setPathRes(path.map((item) => <li key={`path-item-${item}`}>{item}</li>));
+    }
   }
 
   function get_random_player(setFunc) {
@@ -76,7 +55,6 @@ function SixDegreesForm() {
   return (
     <div>
       <h1>Six Degrees of Separation</h1>
-      <h1>{g.vertices["HerbJu00"]}</h1>
       <p>
         Look up two players on Pro Football Reference. Paste in their URL IDs
         and hit submit. As an example, Aaron Rodgers's PFR URL is
