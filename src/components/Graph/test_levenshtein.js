@@ -3,10 +3,8 @@ const fuzzysort = require("fuzzysort");
 
 // console.log(fuzzysort);
 const nameArr = [];
-let i = 0;
 for (const name in n2i) {
   nameArr.push(name);
-  i++;
 }
 
 const res = fuzzysort.go("dry", nameArr, {

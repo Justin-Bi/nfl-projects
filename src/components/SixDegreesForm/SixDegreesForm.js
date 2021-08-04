@@ -2,9 +2,6 @@ import React, { useState } from "react";
 import g from "../Graph/Graph";
 
 function SixDegreesForm() {
-  // console.log(players.length);
-  // console.log(players.map((name) => ({ value: name, label: name }))); // Change this later so that it's stored as data
-
   const [pathRes, setPathRes] = useState(null);
 
   const [playerOne, setPlayerOne] = useState("");
