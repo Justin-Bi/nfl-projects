@@ -10,7 +10,12 @@ function TeammatesForm() {
     return (
       <div className="autocomplete-items" id="autocomplete-list">
         {suggestions.map(function (item, i) {
-          return <div key={i}>{item}</div>;
+          return (
+            <div key={i}>
+              {item}
+              <input type="hidden" value={item} />{" "}
+            </div>
+          );
         })}
         {/* <div>
           {"Test"}
