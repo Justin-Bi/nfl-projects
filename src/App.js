@@ -1,37 +1,42 @@
 import React from "react";
-import "./App.css";
-import SixDegreesForm from "./components/SixDegreesForm";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
+import "./App.css";
+
+import SixDegreesForm from "./components/SixDegreesForm";
+import TeammatesForm from "./components/TeammatesForm/TeammatesForm";
 
 function App() {
   return (
-    <Router>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/about">About</Link>
-        </li>
-        <li>
-          <Link to="/dashboard">Dashboard</Link>
-        </li>
-      </ul>
-      <Switch>
-        <Route exact path="/">
-          <h1>Home</h1>
-        </Route>
-        <Route path="/about">
-          <h1>About</h1>
-        </Route>
-        <Route path="/dashboard">
-          <h1>Dashboard</h1>
-        </Route>
-      </Switch>
-      <div className="App">
-        <SixDegreesForm />
-      </div>
-    </Router>
+    <div className="App">
+      <Router>
+        <ul>
+          <li>
+            <Link to="/six-degrees">Six Degrees of Separation</Link>
+          </li>
+          <li>
+            <Link to="/teammates">Teammates</Link>
+          </li>
+          <li>
+            <Link to="/height-and-weight">Height and Weight</Link>
+          </li>
+        </ul>
+        <Switch>
+          <Route exact path="/">
+            <h1>Home</h1>
+          </Route>
+          <Route path="/six-degrees">
+            <SixDegreesForm />
+          </Route>
+          <Route path="/teammates">
+            <TeammatesForm />
+          </Route>
+          <Route path="/height-and-weight">
+            <h1>Under Construction!</h1>
+          </Route>
+        </Switch>
+      </Router>
+    </div>
   );
 }
 

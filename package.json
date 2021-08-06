@@ -8,12 +8,15 @@
     "@testing-library/user-event": "^7.1.2",
     "babel": "^6.23.0",
     "fuzzysort": "^1.1.4",
+    "node-sass": "4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-dropdown-select": "^4.7.4",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
-    "react-select": "^4.3.1"
+    "react-select": "^4.3.1",
+    "sass": "^1.37.5",
+    "sass-loader": "^12.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -38,5 +41,6 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:5000"
+  "proxy": "http://localhost:5000",
+  "devDependencies": {}
 }

@@ -134,12 +134,6 @@ class Graph:
 mLink = 'https://github.com/Justin-Bi/nfl-projects/blob/master/api/nfl_graph_4.pkl?raw=true'
 mFile = BytesIO(requests.get(mLink).content)
 g = pickle.load(mFile)
-# print("In api")
-# print(g.find_path('GrahOt00', 'RodgAa00'))
-# print("Out of api")
-# h = len(tmp.vertices)
-
-print(g.find_path("HerbJu00", "AlleKe00"))
 
 
 @app.errorhandler(404)

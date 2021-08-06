@@ -20,7 +20,7 @@ class Graph {
       limit: amount,
     });
     const arr = [];
-    for (const r in res) {
+    for (const r of res) {
       arr.push(r.target);
     }
     return arr;
@@ -49,7 +49,9 @@ class Graph {
         // about to be added must be a teammate
         if (path.length === 2) {
           for (const neighbor of neighbors) {
-            teammates.push(neighbor);
+            if (!teammates.includes(neighbor)) {
+              teammates.push(neighbor);
+            }
           }
         } else {
           // Loop to iterate over the neighbors of the node
@@ -108,7 +110,5 @@ class Graph {
 }
 
 const g = new Graph(vertices, i2n, n2i);
-
-console.log(g.getTeammates("FielJu00"));
 
 export default g;
