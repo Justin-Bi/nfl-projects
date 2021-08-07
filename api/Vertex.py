@@ -5,6 +5,8 @@
 class Vertex:
     def __init__(self, name, id, isPlayer):
         self.name = name    # The English name, eg Aaron Rodgers or 2020 Green Bay Packers
+        # These search_names are unique, should eventually just replace name
+        self.search_name = ""
         self.id = id    # id is what is used to identify the player/team, since same names exist
         # If true, is player; if false, is team. Only these two choices exist
         self.isPlayer = isPlayer

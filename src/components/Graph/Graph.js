@@ -1,23 +1,52 @@
 const vertices = require("./graph.json");
 const i2n = require("./id_to_name.json");
 const n2i = require("./name_to_id.json");
+const vert_objs = require("./vert_objs.json");
 const fuzzysort = require("fuzzysort");
 
 class Graph {
-  constructor(vertices, i2n, n2i) {
+  constructor(vertices, i2n, n2i, vert_objs) {
     this.vertices = vertices;
     this.id_to_name = i2n;
     this.name_to_id = n2i;
+    this.vert_objs = vert_objs;
     this.names = [];
+    this.players = [];
 
     for (const name in n2i) {
       this.names.push(name);
     }
+
+    for (const id in vert_objs) {
+      if (vert_objs[id].isPlayer) {
+        this.players.push(vert_objs[id].searchName);
+      }
+    }
   }
 
-  bestNames(input, amount = 20) {
-    const res = fuzzysort.go(input, this.names, {
+  // Returns the closest matching names of all
+  bestNames(input, coll, amount = 20) {
+    let collection;
+    switch (coll) {
+      case "all":
+        collection = this.names;
+        break;
+      case "players":
+        collection = this.players;
+        break;
+      case "teams":
+        collection = this.teams;
+        break;
+      default:
+        collection = [];
+    }
+
+    const inColl = collection.includes(input);
+
+    const res = fuzzysort.go(input, collection, {
       limit: amount,
+      threshold: inColl ? -100 : -Infinity,
+      allowTypo: true,
     });
     const arr = [];
     for (const r of res) {
@@ -64,7 +93,12 @@ class Graph {
         }
       }
     }
-    // Condition when the nodes are not connected
+
+    // Remove the sourceId from the teammates
+    const idx = teammates.indexOf(sourceId);
+    if (idx > -1) {
+      teammates.splice(idx, 1);
+    }
     return teammates;
   }
 
@@ -109,6 +143,6 @@ class Graph {
   }
 }
 
-const g = new Graph(vertices, i2n, n2i);
+const g = new Graph(vertices, i2n, n2i, vert_objs);
 
 export default g;
