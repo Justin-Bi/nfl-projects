@@ -1,26 +1,17 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import "./App.css";
+import "./App.scss";
 
 import SixDegreesForm from "./components/SixDegreesForm";
-import TeammatesForm from "./components/TeammatesForm/TeammatesForm";
+import TeammatesForm from "./components/TeammatesForm";
+import NavBar from "./components/NavBar";
 
 function App() {
   return (
     <div className="App">
       <Router>
-        <ul>
-          <li>
-            <Link to="/six-degrees">Six Degrees of Separation</Link>
-          </li>
-          <li>
-            <Link to="/teammates">Teammates</Link>
-          </li>
-          <li>
-            <Link to="/height-and-weight">Height and Weight</Link>
-          </li>
-        </ul>
+        <NavBar />
         <Switch>
           <Route exact path="/">
             <h1>Home</h1>

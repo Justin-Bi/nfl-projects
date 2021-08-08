@@ -1,0 +1,19 @@
+.nav-bar {
+  background-color: #013369;
+  display: flex;
+}
+
+#nav-link-group {
+  text-align: right;
+}
+
+.nav-link {
+  display: inline-block;
+  margin: 8px 0px;
+}
+
+.nav-link-text {
+  overflow: hidden;
+  color: white;
+  font-size: 18px;
+}
