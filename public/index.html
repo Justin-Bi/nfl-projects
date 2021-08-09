@@ -3,6 +3,33 @@
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+
+    <!-- Loading in fonts (hopefully no FOUT/FOIT) -->
+    <!-- https://fonts.gstatic.com is the font file origin -->
+    <!-- It may not have the same origin as the CSS file (https://fonts.googleapis.com) -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- We use the full link to the CSS file in the rest of the tags -->
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Asap&display=swap"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Asap&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Asap&display=swap"
+      />
+    </noscript>
+
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta

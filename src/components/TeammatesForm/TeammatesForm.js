@@ -61,7 +61,7 @@ function TeammatesForm() {
 
   return (
     <div className="body">
-      <h1>Temporary Teammates Form</h1>
+      <h1>Teammates</h1>
       <p>
         Search up any player and hit submit to see all of the people they've
         been on a roster with!
