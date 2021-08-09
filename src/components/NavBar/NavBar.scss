@@ -4,16 +4,42 @@
 }
 
 #nav-link-group {
+  height: 100%;
   text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .nav-link {
   display: inline-block;
-  margin: 8px 0px;
+  margin: 8px 16px;
+  padding: 0px;
+  color: #dddddd;
+  font-size: 16px;
+  font-weight: 500;
+
+  &:hover {
+    color: white;
+  }
+
+  &.home-link {
+    margin: 8px 0px;
+    padding: 0px;
+  }
 }
 
-.nav-link-text {
-  overflow: hidden;
+.home-link-group {
+  text-align: left;
+}
+
+.active-link {
+  color: white !important;
+  text-decoration: underline;
+}
+
+.home-link-text {
   color: white;
-  font-size: 18px;
+  font-size: 28px;
+  font-weight: 400;
 }
