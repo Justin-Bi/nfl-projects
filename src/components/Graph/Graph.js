@@ -24,6 +24,19 @@ class Graph {
     }
   }
 
+  // Return a random item (either name or player)
+  randomName(category) {
+    if (category === "players") {
+      return this.players[Math.floor(Math.random() * this.players.length)];
+    } else if (category === "teams") {
+      return "Not yet implemented";
+    } else if (category === "all") {
+      return this.names[Math.floor(Math.random() * this.names.length)];
+    } else {
+      return "Error";
+    }
+  }
+
   // Returns the closest matching names of all
   bestNames(input, coll, amount = 20) {
     let collection;
