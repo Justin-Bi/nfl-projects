@@ -2,5 +2,11 @@
   max-width: 1200px;
   margin: 0 auto;
   margin-top: 40px;
-  // padding-left: calc(100vw - 100%);
+  #inner-body {
+    margin: 0 40px;
+  }
+}
+
+html {
+  overflow-y: scroll;
 }

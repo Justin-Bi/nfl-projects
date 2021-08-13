@@ -58,6 +58,10 @@ function InputField({ inputId, label, setValueFunc }) {
           name={inputId}
           className="input-class"
           value={input}
+          style={{
+            borderRadius:
+              focused && suggestions.length !== 0 ? "4px 4px 0 0" : "4px",
+          }}
           onFocus={() => {
             setFocused(true);
           }}
@@ -75,7 +79,6 @@ function InputField({ inputId, label, setValueFunc }) {
           }}
           onKeyDown={(e) => {
             if (focused) {
-              console.log("IN here");
               if (e.key === "ArrowUp") {
                 e.preventDefault();
                 const calcIdx =

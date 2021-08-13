@@ -7,11 +7,28 @@ import Button from "../Button";
 function TeammatesForm() {
   const [teammates, setTeammates] = useState([]);
   const [value, setValue] = useState("");
+  const [dispValue, setDispValue] = useState("");
+  const [corrected, setCorrected] = useState(true);
+  const [invSearch, setInvSearch] = useState(false);
 
   function handleTeammatesForm(e) {
     e.preventDefault(); // Default behavior is to refresh page, we don't want that
-    // const id = g.name_to_id[e.target.player.value];
-    const id = g.name_to_id[value];
+    setCorrected(false);
+    setInvSearch(false);
+    let id;
+    if (!g.players.includes(value)) {
+      const res = g.bestNames(value, "players", 1);
+      if (!res.length) {
+        setInvSearch(true);
+        return;
+      }
+      setCorrected(true);
+      id = g.name_to_id[res[0]];
+      setDispValue(res[0]);
+    } else {
+      id = g.name_to_id[value];
+      setDispValue(value);
+    }
 
     const teammateRes = g.getTeammates(id);
     teammateRes.forEach((id, idx) => {
@@ -19,6 +36,37 @@ function TeammatesForm() {
     });
     setTeammates(teammateRes);
   }
+
+  const TeammatesReturnDiv = () => {
+    if (invSearch) {
+      return (
+        <div>
+          <p>
+            Sorry, we weren't able to find anyone with that name, please double
+            check the input.
+          </p>
+        </div>
+      );
+    } else if (!teammates.length) {
+      return null;
+    }
+    return (
+      <div>
+        {corrected && (
+          <p>
+            Did you mean <strong>{dispValue}</strong>?
+          </p>
+        )}
+        <p>
+          <strong>{dispValue}</strong> has been on a roster with{" "}
+          <strong>{teammates.length}</strong> unique people.
+        </p>
+        {teammates.map(function (item, i) {
+          return <li key={i}>{item}</li>;
+        })}
+      </div>
+    );
+  };
 
   const props = {
     inputId: "player",
@@ -39,11 +87,12 @@ function TeammatesForm() {
         </div>
         <Button submit value="Submit" />
       </form>
-      <div>
+      <TeammatesReturnDiv />
+      {/* <div>
         {teammates.map(function (item, i) {
           return <li key={i}>{item}</li>;
         })}
-      </div>
+      </div> */}
     </div>
   );
 }

@@ -53,10 +53,7 @@ function SixDegreesForm() {
     <div>
       <h1>Six Degrees of Separation</h1>
       <p>
-        Look up two players on Pro Football Reference. Paste in their URL IDs
-        and hit submit. As an example, Aaron Rodgers's PFR URL is
-        https://www.pro-football-reference.com/players/R/RodgAa00.htm, so his ID
-        would be RodgAa00.
+        Search any two players and see how they're linked by mutual teammates!
       </p>
       <form onSubmit={handleSubmit2}>
         <label htmlFor="player1">Player 1:</label>

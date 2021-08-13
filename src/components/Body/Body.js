@@ -7,20 +7,22 @@ import TeammatesForm from "../TeammatesForm";
 function Body() {
   return (
     <div id="body-wrapper">
-      <Switch>
-        <Route exact path="/">
-          <h1>Home</h1>
-        </Route>
-        <Route path="/six-degrees">
-          <SixDegreesForm />
-        </Route>
-        <Route path="/teammates">
-          <TeammatesForm />
-        </Route>
-        <Route path="/height-and-weight">
-          <h1>Under Construction!</h1>
-        </Route>
-      </Switch>
+      <div id="inner-body">
+        <Switch>
+          <Route exact path="/">
+            <h1>Home</h1>
+          </Route>
+          <Route path="/six-degrees">
+            <SixDegreesForm />
+          </Route>
+          <Route path="/teammates">
+            <TeammatesForm />
+          </Route>
+          <Route path="/height-and-weight">
+            <h1>Under Construction!</h1>
+          </Route>
+        </Switch>
+      </div>
     </div>
   );
 }

@@ -1,3 +1,5 @@
+@import url("../../_colors.scss");
+@import "../../colors";
 * {
   box-sizing: border-box;
 }
@@ -22,22 +24,22 @@ input {
 }
 
 input[type="text"] {
-  box-shadow: 0 0 0 2px gray inset;
+  box-shadow: 0 0 0 2px $grayscale-50 inset;
+  // -webkit-box-shadow: 0 0 0 2px $grayscale-50 inset;
   background-color: #fcfcfc;
   &:focus,
   &:hover {
-    box-shadow: 0 0 0 2px cornflowerblue inset;
+    box-shadow: 0 0 0 2px $nfl-blue inset;
   }
 }
 
-.input-class {
-  position: relative;
-  display: inline-block;
+label {
+  pointer-events: none;
 }
 
 .autocomplete-items {
   position: absolute;
-  border: 1px solid #d4d4d4;
+  border: 2px solid $grayscale-50;
   border-radius: 0 0 4px 4px;
   border-top: none;
 
@@ -46,7 +48,7 @@ input[type="text"] {
   right: 0;
 
   // The scrolling section
-  max-height: 248px;
+  max-height: 256px;
   overflow-y: scroll;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
@@ -60,30 +62,32 @@ input[type="text"] {
     z-index: 999;
     padding: 10px;
     cursor: pointer;
-    border-bottom: 1px solid #d4d4d4;
+    border-bottom: 2px solid $grayscale-50;
   }
 
   div:hover {
-    background-color: #e9e9e9;
+    background-color: $grayscale-10;
   }
 }
 
 .autocomplete-active {
-  background-color: DodgerBlue !important;
+  background-color: $nfl-blue !important;
   color: #ffffff;
 }
 
 .random-input-icon {
   height: 18px;
-  // margin: 0px 8px;
   margin: 0px 8px;
   display: block;
   transform: scale(1, 1.2);
   position: relative;
-  // fill: rgb(220, 220, 224);
+  fill: $grayscale-50;
   float: right;
   &:hover {
     cursor: pointer;
+  }
+  &:active {
+    fill: $grayscale-70;
   }
 }
 
@@ -94,8 +98,6 @@ input[type="text"] {
 }
 
 .temp-div {
-  // float: left;
   position: relative;
   display: inline-block;
-  // display: block;
 }
