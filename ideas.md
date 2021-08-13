@@ -1,3 +1,4 @@
 - Change the graph to only contain players, then find connections between the players?
 - Deviantart/Reddit/Newgrounds sort by, slideshow, and date range
 - Do the body.js file soon
+- Detexify, but for music symbolsss

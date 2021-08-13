@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./InputField.scss";
 import g from "../Graph/Graph";
 
-function InputField({ inputId, passedValue, setValueFunc }) {
+function InputField({ inputId, label, setValueFunc }) {
   const [focused, setFocused] = useState(false);
   const [activeIdx, setActiveIdx] = useState(0);
   const [suggestions, setSuggestions] = useState([]);
@@ -10,19 +10,20 @@ function InputField({ inputId, passedValue, setValueFunc }) {
   const [input, setInput] = useState(""); // Will want to rename this to value
 
   const AutocompleteList = () => {
-    if (!focused) {
-      return null;
-    }
-
-    return (
+    return !focused ? null : (
       <div
-        className="autocomplete-items"
         id="autocomplete-list"
+        className="autocomplete-items"
         style={{ borderBottom: suggestions.length ? null : "none" }}
       >
         {suggestions.map(function (item, i) {
           return (
             <div
+              className={activeIdx === i ? "autocomplete-active" : null}
+              // Prevents the bottom item to have a double border conflicting with the container
+              style={{
+                borderBottom: i === suggestions.length - 1 ? "none" : null,
+              }}
               key={i}
               // onMouseDown prevents default to stop the form from blurring before onClick can activate
               onMouseDown={(e) => {
@@ -34,14 +35,8 @@ function InputField({ inputId, passedValue, setValueFunc }) {
                 setFocused(false);
                 setActiveIdx(-1);
               }}
-              className={activeIdx === i ? "autocomplete-active" : null}
-              // Prevents the bottom item to have a double border conflicting with the container
-              style={{
-                borderBottom: i === suggestions.length - 1 ? "none" : null,
-              }}
             >
               {item}
-              <input type="hidden" value={item} />
             </div>
           );
         })}
@@ -49,18 +44,19 @@ function InputField({ inputId, passedValue, setValueFunc }) {
     );
   };
 
-  function handleTeammatesInputChange(e) {
-    setSuggestions(g.bestNames(e.target.value, "players"));
+  function handleTeammatesInputChange(searchQuery) {
+    setSuggestions(g.bestNames(searchQuery, "players"));
   }
 
   return (
-    <div>
+    <div className="autoComplete">
       <div className="temp-div">
+        <label htmlFor={inputId}>{label}</label>
         <input
           type="text"
           id={inputId}
-          className="input-class"
           name={inputId}
+          className="input-class"
           value={input}
           onFocus={() => {
             setFocused(true);
@@ -75,38 +71,31 @@ function InputField({ inputId, passedValue, setValueFunc }) {
             setInput(e.target.value);
             setValueFunc(e.target.value);
             setTextInput(e.target.value);
-            handleTeammatesInputChange(e);
+            handleTeammatesInputChange(e.target.value);
           }}
           onKeyDown={(e) => {
             if (focused) {
+              console.log("IN here");
               if (e.key === "ArrowUp") {
                 e.preventDefault();
-                if (activeIdx <= -1) {
-                  setActiveIdx(suggestions.length - 1);
-                } else {
-                  setActiveIdx(activeIdx - 1);
-                }
+                const calcIdx =
+                  activeIdx <= -1 ? suggestions.length - 1 : activeIdx - 1;
+                setActiveIdx(calcIdx);
                 // Set inputs
                 const newIdx =
                   activeIdx === -1 ? suggestions.length - 1 : activeIdx - 1;
                 setInput(newIdx !== -1 ? suggestions[newIdx] : textInput);
                 setValueFunc(newIdx !== -1 ? suggestions[newIdx] : textInput);
               } else if (e.key === "ArrowDown") {
-                if (activeIdx >= suggestions.length - 1) {
-                  setActiveIdx(-1);
-                } else {
-                  setActiveIdx(activeIdx + 1);
-                }
-                setInput(
+                const calcIdx =
+                  activeIdx >= suggestions.length - 1 ? -1 : activeIdx + 1;
+                setActiveIdx(calcIdx);
+                const calcInput =
                   activeIdx < suggestions.length - 1
                     ? suggestions[(activeIdx + 1) % suggestions.length]
-                    : textInput
-                );
-                setValueFunc(
-                  activeIdx < suggestions.length - 1
-                    ? suggestions[(activeIdx + 1) % suggestions.length]
-                    : textInput
-                );
+                    : textInput;
+                setInput(calcInput);
+                setValueFunc(calcInput);
               } else if (e.key === "Enter") {
                 if (activeIdx !== -1) {
                   e.preventDefault();
@@ -132,7 +121,9 @@ function InputField({ inputId, passedValue, setValueFunc }) {
           onClick={() => {
             const playerName = g.randomName("players");
             setInput(playerName);
+            setTextInput(playerName);
             setValueFunc(playerName);
+            handleTeammatesInputChange(playerName);
           }}
         >
           <path

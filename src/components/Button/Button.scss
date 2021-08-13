@@ -1,0 +1,13 @@
+@import "../../colors";
+
+input[type="submit"] {
+  background-color: $nfl-blue;
+  color: white;
+}
+
+.jb-button {
+  margin-bottom: 16px;
+  &:active {
+    background-color: $nfl-blue-30;
+  }
+}

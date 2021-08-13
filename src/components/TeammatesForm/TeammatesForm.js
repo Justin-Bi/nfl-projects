@@ -2,14 +2,11 @@ import React, { useState } from "react";
 import g from "../Graph/Graph";
 import "./TeammatesForm.scss";
 import InputField from "../InputField";
+import Button from "../Button";
 
 function TeammatesForm() {
   const [teammates, setTeammates] = useState([]);
   const [value, setValue] = useState("");
-
-  // function handleTeammatesInputChange(e) {
-  //   setSuggestions(g.bestNames(e.target.value, "players"));
-  // }
 
   function handleTeammatesForm(e) {
     e.preventDefault(); // Default behavior is to refresh page, we don't want that
@@ -25,7 +22,7 @@ function TeammatesForm() {
 
   const props = {
     inputId: "player",
-    passedValue: value,
+    label: "Player",
     setValueFunc: setValue,
   };
 
@@ -38,13 +35,9 @@ function TeammatesForm() {
       </p>
       <form autoComplete="off" onSubmit={handleTeammatesForm}>
         <div className="input-field-group">
-          <div className="autoComplete">
-            <label htmlFor="player">Player</label>
-            <InputField {...props} />
-          </div>
+          <InputField {...props} />
         </div>
-        <br />
-        <input type="submit" value="Submit" />
+        <Button submit value="Submit" />
       </form>
       <div>
         {teammates.map(function (item, i) {
