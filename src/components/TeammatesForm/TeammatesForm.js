@@ -3,6 +3,7 @@ import g from "../Graph/Graph";
 import "./TeammatesForm.scss";
 import InputField from "../InputField";
 import Button from "../Button";
+import Icon from "../Icon";
 
 function TeammatesForm() {
   const [teammates, setTeammates] = useState([]);
@@ -10,11 +11,13 @@ function TeammatesForm() {
   const [dispValue, setDispValue] = useState("");
   const [corrected, setCorrected] = useState(true);
   const [invSearch, setInvSearch] = useState(false);
+  const [listToggle, setListToggle] = useState(false);
 
   function handleTeammatesForm(e) {
     e.preventDefault(); // Default behavior is to refresh page, we don't want that
     setCorrected(false);
     setInvSearch(false);
+    setListToggle(false);
     let id;
     if (!g.players.includes(value)) {
       const res = g.bestNames(value, "players", 1);
@@ -61,9 +64,22 @@ function TeammatesForm() {
           <strong>{dispValue}</strong> has been on a roster with{" "}
           <strong>{teammates.length}</strong> unique people.
         </p>
-        {teammates.map(function (item, i) {
-          return <li key={i}>{item}</li>;
-        })}
+        <p
+          id="toggle-paragraph"
+          onClick={() => {
+            setListToggle(!listToggle);
+          }}
+        >
+          Click here to {listToggle ? "hide" : "show"} all the teammates{" "}
+          <Icon
+            type={listToggle ? "UpArrow" : "DownArrow"}
+            style={{ fill: "#333333", height: "18px" }}
+          />
+        </p>
+        {listToggle &&
+          teammates.map(function (item, i) {
+            return <li key={i}>{item}</li>;
+          })}
       </div>
     );
   };
@@ -88,11 +104,6 @@ function TeammatesForm() {
         <Button submit value="Submit" />
       </form>
       <TeammatesReturnDiv />
-      {/* <div>
-        {teammates.map(function (item, i) {
-          return <li key={i}>{item}</li>;
-        })}
-      </div> */}
     </div>
   );
 }
