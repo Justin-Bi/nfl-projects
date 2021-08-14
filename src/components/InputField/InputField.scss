@@ -26,7 +26,7 @@ input {
 input[type="text"] {
   box-shadow: 0 0 0 2px $grayscale-50 inset;
   -webkit-box-shadow: 0 0 0 2px $grayscale-50 inset;
-  // -webkit-appearance: none;
+  -webkit-appearance: none;
   background-color: #fcfcfc;
   &:focus,
   &:hover {
