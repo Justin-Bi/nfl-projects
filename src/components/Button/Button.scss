@@ -8,6 +8,13 @@ input[type="submit"] {
 .jb-button {
   margin-bottom: 16px;
   &:active {
-    background-color: $nfl-blue-30;
+    background-color: $nfl-blue-m-30 !important;
+  }
+  &:hover {
+    background-color: $nfl-blue-p-10;
+  }
+  &:disabled {
+    background-color: $nfl-blue-p-40;
+    cursor: not-allowed;
   }
 }

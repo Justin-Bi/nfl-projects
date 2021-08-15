@@ -4,6 +4,7 @@ import "./TeammatesForm.scss";
 import InputField from "../InputField";
 import Button from "../Button";
 import Icon from "../Icon";
+import HeroText from "../HeroText";
 
 function TeammatesForm() {
   const [teammates, setTeammates] = useState([]);
@@ -92,7 +93,7 @@ function TeammatesForm() {
 
   return (
     <div id="teammates-form">
-      <h1 className="hero-title">Teammates</h1>
+      <HeroText>Teammates</HeroText>
       <p>
         Search up any player and hit submit to see all of the people they've
         been on a roster with!
@@ -101,7 +102,7 @@ function TeammatesForm() {
         <div className="input-field-group">
           <InputField {...props} />
         </div>
-        <Button submit value="Submit" />
+        <Button type="submit" value="Submit" />
       </form>
       <TeammatesReturnDiv />
     </div>

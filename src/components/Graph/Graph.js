@@ -25,25 +25,25 @@ class Graph {
   }
 
   // TESTING: Split the path function so that it doesn't block the UI, testing some techniques here
-  uiBlockingTest(sourceId, targetId, setFunc, setSearched) {
+  uiBlockingTest(sourceId, targetId, graphReturnFunc) {
     const visited = []; // Tracks visited vertices
     const queue = [[sourceId]]; // Vertices to visit
     const verts = this.vertices;
     const maxTimePerChunk = 50; // Tested to be a pretty good result
+    let time = 0;
+
     function now() {
       return new Date().getTime();
     }
 
-    if (!sourceId || !targetId || !verts[sourceId] || !verts[targetId]) {
-      setFunc([]);
-      setSearched(true);
+    if (!verts[sourceId] || !verts[targetId]) {
+      graphReturnFunc([]);
       return;
     }
 
     // Edge case where they're the same
     if (sourceId === targetId) {
-      setFunc([sourceId]);
-      setSearched(true);
+      graphReturnFunc([sourceId]);
       return;
     }
 
@@ -61,8 +61,7 @@ class Graph {
             queue.push(newPath);
             // Check if the neighbor node is the goal
             if (neighbor === targetId) {
-              setFunc(newPath);
-              setSearched(true);
+              graphReturnFunc(newPath);
               return;
             }
           }
@@ -70,11 +69,11 @@ class Graph {
         }
       }
       if (queue.length > 0) {
-        console.log("In if");
+        console.log(time / 1000);
+        time += maxTimePerChunk;
         setTimeout(doChunk, 0);
       } else {
-        setFunc([]);
-        setSearched(true);
+        graphReturnFunc([]);
         return;
       }
     }

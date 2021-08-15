@@ -5,8 +5,9 @@ function Button(props) {
   return (
     <input
       className="jb-button"
-      type={props.submit ? "submit" : null}
+      type={props.type || "button"}
       value={props.value}
+      disabled={props.disabled || false}
     />
   );
 }

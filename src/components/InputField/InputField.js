@@ -34,6 +34,7 @@ function InputField({ inputId, label, setValueFunc }) {
                 setValueFunc(item);
                 setFocused(false);
                 setActiveIdx(-1);
+                handleTeammatesInputChange(item);
               }}
             >
               {item}
@@ -65,9 +66,10 @@ function InputField({ inputId, label, setValueFunc }) {
           onFocus={() => {
             setFocused(true);
           }}
-          onBlur={() => {
+          onBlur={(e) => {
             setFocused(false);
             setActiveIdx(-1);
+            handleTeammatesInputChange(e.target.value);
           }}
           onChange={(e) => {
             setFocused(true);
@@ -103,6 +105,7 @@ function InputField({ inputId, label, setValueFunc }) {
                 if (activeIdx !== -1) {
                   e.preventDefault();
                   setInput(suggestions[activeIdx]);
+                  handleTeammatesInputChange(suggestions[activeIdx]);
                   setFocused(false);
                   setActiveIdx(-1);
                 }
