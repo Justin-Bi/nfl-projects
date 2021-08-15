@@ -24,6 +24,63 @@ class Graph {
     }
   }
 
+  // TESTING: Split the path function so that it doesn't block the UI, testing some techniques here
+  uiBlockingTest(sourceId, targetId, setFunc, setSearched) {
+    const visited = []; // Tracks visited vertices
+    const queue = [[sourceId]]; // Vertices to visit
+    const verts = this.vertices;
+    const maxTimePerChunk = 50; // Tested to be a pretty good result
+    function now() {
+      return new Date().getTime();
+    }
+
+    if (!sourceId || !targetId || !verts[sourceId] || !verts[targetId]) {
+      setFunc([]);
+      setSearched(true);
+      return;
+    }
+
+    // Edge case where they're the same
+    if (sourceId === targetId) {
+      setFunc([sourceId]);
+      setSearched(true);
+      return;
+    }
+
+    function doChunk() {
+      const startTime = now();
+      while (queue.length > 0 && now() - startTime <= maxTimePerChunk) {
+        let path = queue.shift();
+        let node = path[path.length - 1];
+        if (!visited.includes(node)) {
+          let neighbors = verts[node];
+          // Loop to iterate over the neighbors of the node
+          for (const neighbor of neighbors) {
+            let newPath = path.slice();
+            newPath.push(neighbor);
+            queue.push(newPath);
+            // Check if the neighbor node is the goal
+            if (neighbor === targetId) {
+              setFunc(newPath);
+              setSearched(true);
+              return;
+            }
+          }
+          visited.push(node);
+        }
+      }
+      if (queue.length > 0) {
+        console.log("In if");
+        setTimeout(doChunk, 0);
+      } else {
+        setFunc([]);
+        setSearched(true);
+        return;
+      }
+    }
+    doChunk();
+  }
+
   // Return a random item (either name or player)
   randomName(category) {
     if (category === "players") {
@@ -117,7 +174,12 @@ class Graph {
 
   path(sourceId, targetId) {
     // Handle case where either of them doesn't exist in the graph
-    if (!sourceId || !targetId) {
+    if (
+      !sourceId ||
+      !targetId ||
+      !vertices.includes(sourceId) ||
+      !vertices.includes(targetId)
+    ) {
       return [];
     }
 

@@ -2,4 +2,4 @@
 - Deviantart/Reddit/Newgrounds sort by, slideshow, and date range
 - Do the body.js file soon
 - Detexify, but for music symbolsss
-- Make an Icon class
+- Create Hero Title class 
