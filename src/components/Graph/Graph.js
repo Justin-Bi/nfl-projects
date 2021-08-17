@@ -12,10 +12,13 @@ class Graph {
     this.vert_objs = vert_objs;
     this.names = [];
     this.players = [];
+    this.size = 0;
 
     for (const name in n2i) {
       this.names.push(name);
     }
+
+    this.size = this.names.length;
 
     for (const id in vert_objs) {
       if (vert_objs[id].isPlayer) {
@@ -25,12 +28,12 @@ class Graph {
   }
 
   // TESTING: Split the path function so that it doesn't block the UI, testing some techniques here
-  uiBlockingTest(sourceId, targetId, graphReturnFunc) {
+  uiBlockingTest(sourceId, targetId, graphReturnFunc, graphCallback) {
     const visited = []; // Tracks visited vertices
     const queue = [[sourceId]]; // Vertices to visit
     const verts = this.vertices;
     const maxTimePerChunk = 50; // Tested to be a pretty good result
-    let time = 0;
+    // let time = 0;
 
     function now() {
       return new Date().getTime();
@@ -69,8 +72,8 @@ class Graph {
         }
       }
       if (queue.length > 0) {
-        console.log(time / 1000);
-        time += maxTimePerChunk;
+        // time += maxTimePerChunk;
+        graphCallback(visited.length);
         setTimeout(doChunk, 0);
       } else {
         graphReturnFunc([]);

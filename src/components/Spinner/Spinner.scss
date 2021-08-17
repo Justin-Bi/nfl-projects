@@ -1,0 +1,16 @@
+@keyframes spinner-border {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.default-spinner {
+  display: inline-block !important;
+  border-radius: 100%;
+  border-width: 2px;
+  border-color: gray gray transparent;
+  border-style: solid;
+  border-image: initial;
+  background: transparent !important;
+  animation: spinner-border 0.75s linear infinite;
+}

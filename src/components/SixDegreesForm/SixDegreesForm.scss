@@ -1,0 +1,164 @@
+@import "../../colors";
+
+.six-degrees-row {
+  text-align: center;
+}
+
+// .content-row {
+//   font-size: 18px;
+// }
+
+.filler-row {
+  background: url(../../images/six-deg-down-arrow.svg) no-repeat top center;
+  background-size: auto 100%;
+}
+
+.player-content {
+  font-size: 20px;
+  padding: 4px 8px;
+  border: 2px solid $nfl-blue;
+  border-radius: 6px;
+  background-color: #fbfbfb;
+}
+
+.filler-content {
+  line-height: 32px;
+  font-size: 16px;
+}
+
+.team-content {
+  font-size: 20px;
+  padding: 4px 8px;
+  border: 2px solid black; // Black is the default color for defunct teams
+  border-radius: 6px;
+  background-color: #fbfbfb;
+
+  // NFL Team Colors
+  &.crd {
+    border-color: $crd;
+  }
+
+  &.atl {
+    border-color: $atl;
+  }
+
+  &.rav {
+    border-color: $rav;
+  }
+
+  &.buf {
+    border-color: $buf;
+  }
+
+  &.car {
+    border-color: $car;
+  }
+
+  &.chi {
+    border-color: $chi;
+  }
+
+  &.cin {
+    border-color: $cin;
+  }
+
+  &.cle {
+    border-color: $cle;
+  }
+
+  &.dal {
+    border-color: $dal;
+  }
+
+  &.den {
+    border-color: $den;
+  }
+
+  &.det {
+    border-color: $det;
+  }
+
+  &.gnb {
+    border-color: $gnb;
+  }
+
+  &.htx {
+    border-color: $htx;
+  }
+
+  &.clt {
+    border-color: $clt;
+  }
+
+  &.jax {
+    border-color: $jax;
+  }
+
+  &.kan {
+    border-color: $kan;
+  }
+
+  &.rai {
+    border-color: $rai;
+  }
+
+  &.sdg {
+    border-color: $sdg;
+  }
+
+  &.ram {
+    border-color: $ram;
+  }
+
+  &.mia {
+    border-color: $mia;
+  }
+
+  &.min {
+    border-color: $min;
+  }
+
+  &.nwe {
+    border-color: $nwe;
+  }
+
+  &.nor {
+    border-color: $nor;
+  }
+
+  &.nyg {
+    border-color: $nyg;
+  }
+
+  &.nyj {
+    border-color: $nyj;
+  }
+
+  &.phi {
+    border-color: $phi;
+  }
+
+  &.pit {
+    border-color: $pit;
+  }
+
+  &.sfo {
+    border-color: $sfo;
+  }
+
+  &.sea {
+    border-color: $sea;
+  }
+
+  &.tam {
+    border-color: $tam;
+  }
+
+  &.oti {
+    border-color: $oti;
+  }
+
+  &.was {
+    border-color: $was;
+  }
+}

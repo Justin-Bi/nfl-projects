@@ -2,10 +2,13 @@ import React, { useState, useEffect, useRef } from "react";
 import g from "../Graph/Graph";
 import InputField from "../InputField";
 import Button from "../Button";
+import Spinner from "../Spinner";
+import "./SixDegreesForm.scss";
 
 function SixDegreesForm() {
   const [searched, setSearched] = useState(false);
   const [searching, setSearching] = useState(false);
+  const [numVisited, setNumVisited] = useState(0);
 
   const [playerOne, setPlayerOne] = useState("");
   const [playerTwo, setPlayerTwo] = useState("");
@@ -29,7 +32,20 @@ function SixDegreesForm() {
     }
   }
 
+  function graphCallback(numVisited) {
+    setNumVisited(numVisited);
+  }
+
   const PathResultsDiv = () => {
+    if (searching) {
+      return (
+        <div>
+          <p>
+            Searched {numVisited} out of {g.size} nodes
+          </p>
+        </div>
+      );
+    }
     if (searched && !pathIDs.length) {
       return (
         <div>
@@ -48,10 +64,10 @@ function SixDegreesForm() {
     pathIDs.forEach((node, idx) => {
       path.push(g.id_to_name[node]);
       path.push(idx % 2 === 0 ? "who was on the" : "with");
-      if (!idx) {
-        path[idx + 1] = "was on the";
-      }
     });
+    if (pathIDs.length) {
+      path[1] = "was on the";
+    }
     const connectionNum = (path.length / 2 - 1) / 2;
     path.pop();
 
@@ -67,13 +83,25 @@ function SixDegreesForm() {
               return (
                 <tr key={i}>
                   <td
-                    style={{
-                      textAlign: "center",
-                      fontSize: i % 2 === 0 ? "18px" : "12px",
-                      color: i % 2 === 0 ? "black" : "gray",
-                    }}
+                    className={`six-degrees-row ${
+                      i % 4 === 0
+                        ? "content-row player-row"
+                        : i % 4 === 2
+                        ? "content-row team-row"
+                        : "filler-row"
+                    }`}
                   >
-                    <span>{item}</span>
+                    <span
+                      className={
+                        i % 4 === 0
+                          ? "player-content"
+                          : i % 2 === 0
+                          ? `team-content ${g.name_to_id[item].substring(1, 4)}`
+                          : "filler-content"
+                      }
+                    >
+                      {item}
+                    </span>
                   </td>
                 </tr>
               );
@@ -94,7 +122,7 @@ function SixDegreesForm() {
 
     const id1 = g.name_to_id[playerOne];
     const id2 = g.name_to_id[playerTwo];
-    g.uiBlockingTest(id1, id2, graphReturnFunc);
+    g.uiBlockingTest(id1, id2, graphReturnFunc, graphCallback);
   }
 
   return (
@@ -121,6 +149,11 @@ function SixDegreesForm() {
         <br />
         <Button type="submit" value="Submit" disabled={searching} />
       </form>
+      {searching && (
+        <span>
+          Loading... <Spinner width="14px" height="14px" />
+        </span>
+      )}
       <PathResultsDiv />
     </div>
   );
