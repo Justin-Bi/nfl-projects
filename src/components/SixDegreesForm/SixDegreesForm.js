@@ -33,7 +33,11 @@ function SixDegreesForm() {
   }
 
   function graphCallback(numVisited) {
+    if (!mounted.current) {
+      return false;
+    }
     setNumVisited(numVisited);
+    return true;
   }
 
   const PathResultsDiv = () => {

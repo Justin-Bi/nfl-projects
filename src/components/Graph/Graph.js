@@ -33,7 +33,6 @@ class Graph {
     const queue = [[sourceId]]; // Vertices to visit
     const verts = this.vertices;
     const maxTimePerChunk = 50; // Tested to be a pretty good result
-    // let time = 0;
 
     function now() {
       return new Date().getTime();
@@ -72,8 +71,10 @@ class Graph {
         }
       }
       if (queue.length > 0) {
-        // time += maxTimePerChunk;
-        graphCallback(visited.length);
+        const mounted = graphCallback(visited.length);
+        if (!mounted) {
+          return;
+        }
         setTimeout(doChunk, 0);
       } else {
         graphReturnFunc([]);

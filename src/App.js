@@ -5,6 +5,7 @@ import "./App.scss";
 
 import NavBar from "./components/NavBar";
 import Body from "./components/Body";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Router>
         <NavBar />
         <Body />
+        <Footer />
       </Router>
     </div>
   );

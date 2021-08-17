@@ -4,8 +4,8 @@
 - Dota 2 Prediction w/ Bag of Heroestod (heroes) and minimax alg
 - Rename temp div
 - Rename the Graph function
-- Way to stop graph func through return
 - Autocorrection in sixdegrees
+- Test if .gitignore can ignore build
 
 Commit notes I saw online that seem helpful
 - feat: The new feature you're adding to a particular application

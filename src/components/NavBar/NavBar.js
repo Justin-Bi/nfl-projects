@@ -23,7 +23,6 @@ function NavBar() {
                 to="/six-degrees"
               >
                 Six Degrees of Separation
-                {/* <span className="nav-link-text">Six Degrees of Separation</span> */}
               </NavLink>
               <NavLink
                 activeClassName="active-link"
@@ -31,7 +30,6 @@ function NavBar() {
                 to="/teammates"
               >
                 Teammates
-                {/* <span className="nav-link-text">Teammates</span> */}
               </NavLink>
               <NavLink
                 activeClassName="active-link"
@@ -39,7 +37,6 @@ function NavBar() {
                 to="/height-and-weight"
               >
                 Height and Weight
-                {/* <span className="nav-link-text">Height and Weight</span> */}
               </NavLink>
             </div>
           </Col>
