@@ -5,7 +5,11 @@
 - Rename temp div
 - Rename the Graph function
 - Autocorrection in sixdegrees
-- Test if .gitignore can ignore build
+- Remainder for this site:
+  - Home Page
+  - Update nfl players graph after roster deadline (8/31), and make it so that it can update itself every once in a while
+  - Hamburger menu for mobile
+  - Game where you try and connect two NFL players
 
 Commit notes I saw online that seem helpful
 - feat: The new feature you're adding to a particular application

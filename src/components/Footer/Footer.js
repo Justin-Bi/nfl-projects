@@ -1,19 +1,52 @@
+import variables from "../../_colors.scss";
+
 import React from "react";
 import "./Footer.scss";
-import Container from "react-bootstrap/Container";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
+import Icon from "../Icon";
 
 function Footer() {
+  const iconStyle = { height: "24px", fill: variables.nflBlue };
+
   return (
     <footer className="footer">
-      <Container>
-        <Row>
-          <Col className="footer-col" lg={{ span: 4, offset: 2 }}>
-            Col 2
-          </Col>
-        </Row>
-      </Container>
+      <span className="footer-col">
+        <Icon type="GitHub" style={iconStyle} />
+        <div>
+          <a className="footer-link" href="https://github.com/Justin-Bi">
+            Github
+          </a>
+        </div>
+      </span>
+      <span className="footer-col">
+        <Icon type="LinkedIn" style={iconStyle} />
+        <div>
+          <a
+            className="footer-link"
+            href="https://www.linkedin.com/in/justinbi/"
+          >
+            LinkedIn
+          </a>
+        </div>
+      </span>
+      <span className="footer-col">
+        <Icon type="Email" style={iconStyle} />
+        <div>
+          <a className="footer-link" href="mailto:justinbi@princeton.edu">
+            Email
+          </a>
+        </div>
+      </span>
+      <span className="footer-col">
+        <Icon type="MySite" style={iconStyle} />
+        <div>
+          <a
+            className="footer-link"
+            href="https://justin-bi.github.io/portfolio/"
+          >
+            My Site
+          </a>
+        </div>
+      </span>
     </footer>
   );
 }

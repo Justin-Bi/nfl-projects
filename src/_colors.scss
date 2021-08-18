@@ -4,6 +4,10 @@ $nfl-blue-p-10: #1a4778;
 $nfl-blue-p-30: #4d7096;
 $nfl-blue-p-50: #6785a5;
 
+:export {
+  nflBlue: $nfl-blue;
+}
+
 $nfl-red: #d50a0a;
 
 $grayscale-10: #e6e6e6;

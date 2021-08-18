@@ -1,3 +1,6 @@
-#toggle-paragraph:hover {
-  cursor: pointer;
+#toggle-paragraph {
+  display: inline-block;
+  &:hover {
+    cursor: pointer;
+  }
 }

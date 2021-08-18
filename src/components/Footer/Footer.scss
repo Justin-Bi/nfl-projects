@@ -3,9 +3,25 @@
 .footer {
   // flex-shrink: 0;
   background-color: #f3f3f3;
-  padding: 20px 0px;
+  padding: 16px 0px 8px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-size: 16px;
 }
 
 .footer-col {
+  display: inline-block;
+  padding: 0px 12px;
   text-align: center;
+}
+
+.footer-link {
+  text-decoration: none;
+  color: $nfl-blue-p-30;
+  &:hover,
+  &:focus {
+    color: $nfl-blue-p-10;
+    text-decoration: underline;
+  }
 }
