@@ -12,13 +12,17 @@ function SixDegreesForm() {
 
   const [playerOne, setPlayerOne] = useState("");
   const [playerTwo, setPlayerTwo] = useState("");
+  const [p1Corrected, setP1Corrected] = useState(false);
+  const [p2Corrected, setP2Corrected] = useState(false);
+  const [p1Display, setP1Display] = useState("");
+  const [p2Display, setP2Display] = useState("");
 
   const [pathIDs, setPathIDs] = useState([]);
   const mounted = useRef(true);
 
+  // Used to check if unmounted, allows stopping the function midway
   useEffect(() => {
     mounted.current = true;
-
     return function cleanup() {
       mounted.current = false;
     };
@@ -77,6 +81,16 @@ function SixDegreesForm() {
 
     return (
       <div>
+        {p1Corrected && (
+          <p>
+            Did you mean <strong>{p1Display}</strong> for player 1?
+          </p>
+        )}
+        {p2Corrected && (
+          <p>
+            Did you mean <strong>{p2Display}</strong> for player 2?
+          </p>
+        )}
         <p>
           The <strong>number of connections</strong> separating these two
           players is <strong>{connectionNum}</strong>.
@@ -124,9 +138,44 @@ function SixDegreesForm() {
     setSearched(false);
     setSearching(true);
 
-    const id1 = g.name_to_id[playerOne];
-    const id2 = g.name_to_id[playerTwo];
-    g.uiBlockingTest(id1, id2, graphReturnFunc, graphCallback);
+    setP1Corrected(false);
+    setP2Corrected(false);
+
+    // Handle P1 correction
+    let id1;
+    if (!g.players.includes(playerOne)) {
+      const res = g.bestNames(playerOne, "players", 1);
+      if (!res.length) {
+        setPathIDs([]);
+        setSearched(true);
+        setSearching(false);
+        return;
+      }
+      setP1Corrected(true);
+      id1 = g.name_to_id[res[0]];
+      setP1Display(res[0]);
+    } else {
+      id1 = g.name_to_id[playerOne];
+    }
+
+    // Handle P2 correction
+    let id2;
+    if (!g.players.includes(playerTwo)) {
+      const res = g.bestNames(playerTwo, "players", 1);
+      if (!res.length) {
+        setPathIDs([]);
+        setSearched(true);
+        setSearching(false);
+        return;
+      }
+      setP2Corrected(true);
+      id2 = g.name_to_id[res[0]];
+      setP2Display(res[0]);
+    } else {
+      id2 = g.name_to_id[playerTwo];
+    }
+
+    g.pathWebVersion(id1, id2, graphReturnFunc, graphCallback);
   }
 
   return (

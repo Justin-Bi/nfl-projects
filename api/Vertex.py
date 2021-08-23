@@ -17,6 +17,7 @@ class Vertex:
             # If they're not already neighors, then add them to both
             if neighbor.id not in self.neighbors:
                 self.neighbors.append(neighbor.id)
+            if self.id not in neighbor.neighbors:
                 neighbor.neighbors.append(self.id)
         else:
             return False

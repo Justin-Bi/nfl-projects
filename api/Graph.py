@@ -23,11 +23,18 @@ class Graph:
     def add_edge(self, v_from, v_to):
         if isinstance(v_from, Vertex) and isinstance(v_to, Vertex):
             # Change this so the var names aren't so long
+
+            # If the verts aren't in the graph, add them
             if v_from.id not in self.vert_objs.keys():
                 self.add_vertex(v_from)
             if v_to.id not in self.vert_objs.keys():
                 self.add_vertex(v_to)
+
+            # add_neighbor() ensures that both vertices' neighbors arrays are updated, only if the id isn't
+            # already in the array
             self.vert_objs[v_from.id].add_neighbor(self.vert_objs[v_to.id])
+
+            # Update the neighbors array, just in case
             self.vertices[v_from.id] = self.vert_objs[v_from.id].neighbors
             self.vertices[v_to.id] = self.vert_objs[v_to.id].neighbors
 

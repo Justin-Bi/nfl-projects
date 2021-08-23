@@ -51,7 +51,7 @@ function InputField({ inputId, label, setValueFunc }) {
 
   return (
     <div className="autoComplete">
-      <div className="temp-div">
+      <div className="input-div">
         <label htmlFor={inputId}>{label}</label>
         <input
           type="text"

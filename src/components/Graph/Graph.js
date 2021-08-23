@@ -27,8 +27,9 @@ class Graph {
     }
   }
 
-  // TESTING: Split the path function so that it doesn't block the UI, testing some techniques here
-  uiBlockingTest(sourceId, targetId, graphReturnFunc, graphCallback) {
+  // This path function doesn't block the UI, and also allows for passed funcs in order to update website progress and
+  // prevent React from updating an unmounted prop
+  pathWebVersion(sourceId, targetId, graphReturnFunc, graphCallback) {
     const visited = []; // Tracks visited vertices
     const queue = [[sourceId]]; // Vertices to visit
     const verts = this.vertices;
@@ -49,6 +50,7 @@ class Graph {
       return;
     }
 
+    // Function does things a chunk at a time, in order to not block the UI
     function doChunk() {
       const startTime = now();
       while (queue.length > 0 && now() - startTime <= maxTimePerChunk) {
