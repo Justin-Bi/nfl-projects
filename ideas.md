@@ -6,19 +6,9 @@
 - Remainder for this site:
   - Home Page
   - Update nfl players graph after roster deadline (8/31), and make it so that it can update itself every once in a while
-  - Hamburger menu for mobile
-    - Prevent scroll
+  - Prevent scroll on iOS
+  - Prevent tabbing while in menu (even Google does this, maybe don't have to worry about it?)
   - Game where you try and connect two NFL players
   - Possibly have links to pfr for players/teams
   - Add 404 page
   - Prevent suggestions from overflowing off page
-
-Commit notes I saw online that seem helpful
-- feat: The new feature you're adding to a particular application
-- fix: A bug fix
-- style: Feature and updates related to styling
-- refactor: Refactoring a specific section of the codebase
-- test: Everything related to testing
-- docs: Everything related to documentation
-- chore: Regular code maintenance.[ You can also use emojis to represent commit types]
-Also write in the imperative

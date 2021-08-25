@@ -10,11 +10,20 @@ function BurgerMenu(props) {
   // To prevent scroll when the menu is open
   document.body.style.overflowY = menuHidden ? "" : "hidden";
 
+  let scrollPosition = window.pageYOffset;
+  if (menuHidden) {
+    window.scrollTo(0, scrollPosition);
+    document.body.style.top = 0;
+    console.log(scrollPosition);
+  } else {
+    scrollPosition = window.pageYOffset;
+    document.body.style.top = -scrollPosition + "px";
+  }
+
   // Edge case where screen size changes while hamburger menu is open
   useEffect(() => {
     return function cleanup() {
       document.body.style.overflowY = "";
-      console.log(document.body.style.overflowY);
     };
   }, []);
 
