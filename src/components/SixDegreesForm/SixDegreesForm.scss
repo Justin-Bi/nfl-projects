@@ -32,6 +32,7 @@
   border: 2px solid black; // Black is the default color for defunct teams
   border-radius: 6px;
   background-color: #fbfbfb;
+  white-space: nowrap;
 
   // NFL Team Colors
   &.crd {

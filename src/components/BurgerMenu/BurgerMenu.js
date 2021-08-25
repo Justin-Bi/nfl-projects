@@ -1,9 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./BurgerMenu.scss";
 import Icon from "../Icon";
 
-function BurgerMenu() {
+import { NavLink } from "react-router-dom";
+
+function BurgerMenu(props) {
   const [menuHidden, setMenuHidden] = useState(true);
+
+  // To prevent scroll when the menu is open
+  document.body.style.overflowY = menuHidden ? "" : "hidden";
+
+  // Edge case where screen size changes while hamburger menu is open
+  useEffect(() => {
+    return function cleanup() {
+      document.body.style.overflowY = "";
+      console.log(document.body.style.overflowY);
+    };
+  }, []);
 
   return (
     <div className="burger-menu-container">
@@ -28,15 +41,52 @@ function BurgerMenu() {
           menuHidden ? "sidebar-hidden" : "sidebar-visible"
         }`}
       >
-        {/* <div
-          className="burger-menu-close-button"
+        <div
+          className="burger-menu-close-button-div"
           onClick={() => {
             setMenuHidden(!menuHidden);
           }}
         >
-          <Icon type="GitHub" />
-        </div> */}
-        <p>Hello</p>
+          <Icon type="XIcon" id="burger-menu-x-button" />
+        </div>
+        <div className="bm-links">
+          <div className="bm-nav-link-div">
+            <NavLink
+              activeClassName="active-link"
+              className="nav-link bm-nav-link"
+              to="/six-degrees"
+              onClick={() => {
+                setMenuHidden(true);
+              }}
+            >
+              Six Degrees of Separation
+            </NavLink>
+          </div>
+          <div className="bm-nav-link-div">
+            <NavLink
+              activeClassName="active-link"
+              className="nav-link bm-nav-link"
+              to="/teammates"
+              onClick={() => {
+                setMenuHidden(true);
+              }}
+            >
+              Teammates
+            </NavLink>
+          </div>
+          <div className="bm-nav-link-div">
+            <NavLink
+              activeClassName="active-link"
+              className="nav-link bm-nav-link"
+              to="/height-and-weight"
+              onClick={() => {
+                setMenuHidden(true);
+              }}
+            >
+              Height and Weight
+            </NavLink>
+          </div>
+        </div>
       </div>
     </div>
   );
