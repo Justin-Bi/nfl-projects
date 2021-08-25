@@ -8,6 +8,7 @@ function Icon(props) {
       y="0px"
       viewBox={props.viewBox || "0 0 24 24"}
       style={props.style || null}
+      id={props.id || null}
     >
       <path d={types[props.type] || null} />
     </svg>

@@ -2,12 +2,16 @@
 - Deviantart/Reddit/Newgrounds sort by, slideshow, and date range
 - Detexify, but for music symbolsss
 - Dota 2 Prediction w/ Bag of Heroestod (heroes) and minimax alg
+
 - Remainder for this site:
   - Home Page
   - Update nfl players graph after roster deadline (8/31), and make it so that it can update itself every once in a while
   - Hamburger menu for mobile
+    - Prevent scroll
   - Game where you try and connect two NFL players
   - Possibly have links to pfr for players/teams
+  - Add 404 page
+  - Prevent suggestions from overflowing off page
 
 Commit notes I saw online that seem helpful
 - feat: The new feature you're adding to a particular application

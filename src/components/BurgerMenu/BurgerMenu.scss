@@ -1,0 +1,55 @@
+@import "../../colors";
+
+.burger-menu-button {
+  height: 24px;
+  width: 24px;
+  float: right;
+}
+
+#burger-menu-icon {
+  fill: white;
+  background-color: transparent;
+  position: relative;
+  &:hover {
+    cursor: pointer;
+  }
+  z-index: 10000;
+}
+
+.burger-menu-background {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  z-index: 5000;
+  transition: visibility 0s linear 0.5s, background-color 0.5s ease;
+  background-color: rgba(0, 0, 0, 0);
+  visibility: hidden;
+  transition-delay: 0.5s, 0s;
+
+  &.burger-menu-background-active {
+    background-color: rgba(0, 0, 0, 0.3);
+    visibility: visible;
+    transition-delay: 0s;
+  }
+}
+
+.burger-menu-sidebar {
+  top: 0px;
+  right: 0px;
+  background-color: $nfl-blue;
+  height: 100vh;
+  position: fixed;
+  width: 240px;
+  z-index: 9000;
+  transition: all 0.5s ease;
+  color: white;
+
+  &.sidebar-hidden {
+    transform: translateX(100%);
+  }
+  &.sidebar-visible {
+    transform: translateX(0%);
+  }
+}
