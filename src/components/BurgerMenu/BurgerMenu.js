@@ -4,7 +4,7 @@ import Icon from "../Icon";
 
 import { NavLink } from "react-router-dom";
 
-function BurgerMenu(props) {
+function BurgerMenu() {
   const [menuHidden, setMenuHidden] = useState(true);
 
   // To prevent scroll when the menu is open

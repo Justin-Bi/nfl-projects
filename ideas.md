@@ -1,11 +1,12 @@
 - Change the graph to only contain players, then find connections between the players?
-- Deviantart/Reddit/Newgrounds sort by, slideshow, and date range
+- Deviantart/Reddit sort by, slideshow, and date range
 - Detexify, but for music symbolsss
 - Dota 2 Prediction w/ Bag of Heroestod (heroes) and minimax alg
 
 - Remainder for this site:
   - Home Page
   - Update nfl players graph after roster deadline (8/31), and make it so that it can update itself every once in a while
+  - Change focus-visible on links
   - Prevent scroll on iOS
   - Prevent tabbing while in menu (even Google does this, maybe don't have to worry about it?)
   - Game where you try and connect two NFL players

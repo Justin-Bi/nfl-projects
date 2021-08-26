@@ -62,7 +62,7 @@ function TeammatesForm() {
           </p>
         )}
         <p>
-          <strong>{dispValue}</strong> has been on a roster with{" "}
+          <strong>{dispValue}</strong> has been teammates with{" "}
           <strong>{teammates.length}</strong> unique people.
         </p>
         <p
@@ -95,8 +95,7 @@ function TeammatesForm() {
     <div id="teammates-form">
       <HeroText>Teammates</HeroText>
       <p>
-        Search up any player and hit submit to see all of the people they've
-        been on a roster with!
+        Search any player to see all the people they've been teammates with!
       </p>
       <form autoComplete="off" onSubmit={handleTeammatesForm}>
         <div className="input-field-group">

@@ -1,0 +1,11 @@
+@import "../../colors";
+
+.home-container {
+  max-width: 600px;
+  & a {
+    color: $nfl-blue-p-20;
+    &:hover {
+      color: $nfl-blue;
+    }
+  }
+}
