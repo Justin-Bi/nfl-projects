@@ -4,6 +4,8 @@ import "./Body.scss";
 import Home from "../Home";
 import SixDegreesForm from "../SixDegreesForm";
 import TeammatesForm from "../TeammatesForm";
+import ConnectionGame from "../ConnectionGame";
+import PageNotFound from "../PageNotFound";
 
 function Body() {
   return (
@@ -19,11 +21,11 @@ function Body() {
           <Route path="/teammates">
             <TeammatesForm />
           </Route>
-          <Route path="/height-and-weight">
-            <h1>Under Construction!</h1>
+          <Route path="/connection-game">
+            <ConnectionGame />
           </Route>
           <Route path="*">
-            <h1>404 Page</h1>
+            <PageNotFound />
           </Route>
         </Switch>
       </div>

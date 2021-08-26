@@ -48,6 +48,16 @@ function SixDegreesForm() {
     if (searching) {
       return (
         <div>
+          {p1Corrected && (
+            <p>
+              Did you mean <strong>{p1Display}</strong> for player 1?
+            </p>
+          )}
+          {p2Corrected && (
+            <p>
+              Did you mean <strong>{p2Display}</strong> for player 2?
+            </p>
+          )}
           <p>
             Searched {numVisited} out of {g.size} nodes
           </p>

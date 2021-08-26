@@ -77,12 +77,12 @@ function BurgerMenu() {
             <NavLink
               activeClassName="active-link"
               className="nav-link bm-nav-link"
-              to="/height-and-weight"
+              to="/connection-game"
               onClick={() => {
                 setMenuHidden(true);
               }}
             >
-              Height and Weight
+              Connection Game
             </NavLink>
           </div>
         </div>

@@ -42,9 +42,9 @@ function NavBar() {
                 <NavLink
                   activeClassName="active-link"
                   className="nav-link"
-                  to="/height-and-weight"
+                  to="/connection-game"
                 >
-                  Height and Weight
+                  Connection Game
                 </NavLink>
               </div>
             )}

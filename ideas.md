@@ -4,7 +4,6 @@
 - Dota 2 Prediction w/ Bag of Heroestod (heroes) and minimax alg
 
 - Remainder for this site:
-  - Home Page
   - Update nfl players graph after roster deadline (8/31), and make it so that it can update itself every once in a while
   - Change focus-visible on links
   - Prevent scroll on iOS
