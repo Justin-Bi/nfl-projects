@@ -1,3 +1,3 @@
 # NFL Projects
 
-Readme coming soon!
+The repo for my https://nfl-projects.herokuapp.com/ website. 
