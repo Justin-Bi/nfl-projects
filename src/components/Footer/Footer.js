@@ -12,7 +12,7 @@ function Footer() {
       <span className="footer-col">
         <Icon type="GitHub" style={iconStyle} />
         <div>
-          <a className="footer-link" href="https://github.com/Justin-Bi">
+          <a className="footer-link" href="https://github.com/justin-bi">
             Github
           </a>
         </div>
@@ -39,10 +39,7 @@ function Footer() {
       <span className="footer-col">
         <Icon type="MySite" style={iconStyle} />
         <div>
-          <a
-            className="footer-link"
-            href="https://justin-bi.github.io/portfolio/"
-          >
+          <a className="footer-link" href="https://justin-bi.github.io/">
             My Site
           </a>
         </div>

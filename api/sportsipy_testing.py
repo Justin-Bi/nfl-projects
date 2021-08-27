@@ -8,7 +8,7 @@ from tqdm import tqdm
 f = open("dup_name_ids.txt", "r")
 no_years_f = open("dup_name_ids_no_years.txt", "w")
 
-mLink = 'https://github.com/Justin-Bi/nfl-projects/blob/master/api/nfl_graph_2.pkl?raw=true'
+mLink = 'https://github.com/justin-bi/nfl-projects/blob/master/api/nfl_graph_2.pkl?raw=true'
 mFile = BytesIO(requests.get(mLink).content)
 g = pickle.load(mFile)
 

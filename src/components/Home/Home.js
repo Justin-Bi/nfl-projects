@@ -47,7 +47,7 @@ function Home() {
       <h3>The Data and the Code</h3>
       <p>
         All the data and the code can be found on my{" "}
-        <a href="https://github.com/Justin-Bi/nfl-projects">GitHub repo</a>{" "}
+        <a href="https://github.com/justin-bi/nfl-projects">GitHub repo</a>{" "}
         (ignore all my testing files haha). For Python users, check the api
         folder, the graph is stored in "nfl_graph_4.pkl" and the functions are
         stored in "Graph.py". For JavaScript users, check the

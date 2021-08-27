@@ -5,7 +5,7 @@ import requests
 with open('./temp.pkl', 'rb') as f:
     updated_g = pickle.load(f)
 
-mLink = 'https://github.com/Justin-Bi/nfl-projects/blob/master/api/nfl_graph_2.pkl?raw=true'
+mLink = 'https://github.com/justin-bi/nfl-projects/blob/master/api/nfl_graph_2.pkl?raw=true'
 mFile = BytesIO(requests.get(mLink).content)
 g = pickle.load(mFile)
 
